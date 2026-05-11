@@ -44,6 +44,111 @@
             background: rgba(250,250,250,0.88);
         }
 
+        /* Light mode fixes — elements that need explicit overrides */
+
+        /* Terminal always stays dark regardless of theme */
+        html.light .hero-terminal {
+            background: #0f0f0f;
+            border-color: #2a2a2a;
+        }
+        html.light .terminal-bar {
+            background: #161616;
+            border-color: #2a2a2a;
+        }
+        html.light .terminal-title { color: #555; }
+
+        /* Stack / skill tags — better contrast in light */
+        html.light .stack-tag {
+            background: #f0f0f0;
+            border-color: #d4d4d8;
+            color: #52525b;
+        }
+        html.light .skill-pill {
+            background: #f4f4f5;
+            border-color: #d4d4d8;
+            color: #52525b;
+        }
+        html.light .skill-pill.highlight {
+            background: rgba(37,99,235,0.08);
+            border-color: rgba(37,99,235,0.25);
+            color: #2563eb;
+        }
+        html.light .tag {
+            background: #f4f4f5;
+            border-color: #d4d4d8;
+            color: #52525b;
+        }
+
+        /* Project cards */
+        html.light .project-card {
+            background: #ffffff;
+            border-color: #e4e4e7;
+        }
+        html.light .project-card:hover { border-color: #d4d4d8; }
+        html.light .project-card.featured { border-color: rgba(37,99,235,0.2); }
+        html.light .project-icon {
+            background: rgba(37,99,235,0.08);
+            border-color: rgba(37,99,235,0.2);
+        }
+        html.light .project-link {
+            border-color: #e4e4e7;
+            color: #a1a1aa;
+        }
+        html.light .project-link:hover { color: #09090b; border-color: #d4d4d8; }
+
+        /* Experience items */
+        html.light .exp-item { border-color: #e4e4e7; }
+        html.light .exp-bullets li::before { color: #d4d4d8; }
+
+        /* Skill groups */
+        html.light .skill-group {
+            background: #ffffff;
+            border-color: #e4e4e7;
+        }
+        html.light .skill-group-title { color: #a1a1aa; }
+
+        /* Stats strip */
+        html.light .stats-strip {
+            background: #ffffff;
+            border-color: #e4e4e7;
+        }
+        html.light .stat-item { border-color: #e4e4e7; }
+
+        /* Contact section */
+        html.light #contact { background: #f4f4f5; border-color: #e4e4e7; }
+        html.light .form-input,
+        html.light .form-textarea {
+            background: #ffffff;
+            border-color: #d4d4d8;
+            color: #09090b;
+        }
+        html.light .form-input::placeholder,
+        html.light .form-textarea::placeholder { color: #a1a1aa; }
+        html.light .form-input:focus,
+        html.light .form-textarea:focus { border-color: rgba(37,99,235,0.5); }
+        html.light .social-btn {
+            background: #ffffff;
+            border-color: #e4e4e7;
+            color: #52525b;
+        }
+        html.light .social-btn:hover { color: #09090b; border-color: #d4d4d8; }
+
+        /* Footer */
+        html.light footer { border-color: #e4e4e7; }
+
+        /* Hero badge */
+        html.light .hero-badge {
+            background: rgba(22,163,74,0.08);
+            border-color: rgba(22,163,74,0.25);
+        }
+
+        /* Buttons in light mode */
+        html.light .btn-ghost {
+            border-color: #d4d4d8;
+            color: #52525b;
+        }
+        html.light .btn-ghost:hover { color: #09090b; }
+
         html { scroll-behavior: smooth; font-size: 16px; }
 
         body {
