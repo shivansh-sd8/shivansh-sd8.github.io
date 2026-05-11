@@ -3,1101 +3,1257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivansh Dwivedi - Senior Full Stack Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-                    },
-                    colors: {
-                        'apple-gray': '#f5f5f7',
-                        'apple-dark': '#1d1d1f',
-                        'apple-blue': '#007aff',
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Shivansh Dwivedi — Senior Full Stack Engineer</title>
+    <meta name="description" content="Senior Full Stack Engineer specialising in real-time systems, WebRTC, healthcare tech, and full-stack product engineering.">
     <style>
-        html {
-            scroll-behavior: smooth;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #080808;
+            --surface: #0f0f0f;
+            --surface-2: #161616;
+            --border: #1f1f1f;
+            --border-2: #2a2a2a;
+            --text-1: #f0f0f0;
+            --text-2: #888;
+            --text-3: #555;
+            --accent: #3b82f6;
+            --accent-dim: rgba(59,130,246,0.12);
+            --accent-dim-2: rgba(59,130,246,0.06);
+            --green: #22c55e;
+            --green-dim: rgba(34,197,94,0.1);
         }
-        
-        /* Modern gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-shift 3s ease-in-out infinite;
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background: var(--bg);
+            color: var(--text-1);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+
+        a { color: inherit; text-decoration: none; }
         
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        /* Typing animation */
-        .typing-animation {
-            overflow: hidden;
-            border-right: 2px solid #007aff;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #007aff; }
-        }
-        
-        /* Floating animation */
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Glow effect */
-        .glow {
-            box-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .glow:hover {
-            box-shadow: 0 0 30px rgba(0, 122, 255, 0.6);
-            transform: translateY(-10px) scale(1.02);
-        }
-        
-        /* Code block styling */
-        .code-block {
-            background: #1a1a1a;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #007aff;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .code-block::before {
-            content: '';
-            position: absolute;
+        /* --- NAV --- */
+        nav {
+            position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #007aff, #00ff00, #ff6b6b);
-            animation: code-glow 2s linear infinite;
-        }
-        
-        @keyframes code-glow {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        /* Terminal cursor */
-        .cursor::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        /* Modern card hover */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(145deg, #ffffff, #f8f9fa);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            background: linear-gradient(145deg, #f8f9fa, #ffffff);
-        }
-        
-        /* Skill progress bars */
-        .skill-bar {
-            background: linear-gradient(90deg, #007aff, #00d4ff);
-            height: 8px;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            width: 0%;
-            transition: width 2s ease-out;
-        }
-        
-        .skill-bar.animate {
-            width: var(--target-width, 0%);
-        }
-        
-        .skill-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            animation: shimmer 3s infinite;
-            animation-delay: 2s;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            background: rgba(8,8,8,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        
-        /* Particle background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .nav-logo {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: var(--text-1);
+        }
+
+        .nav-logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--text-2);
+            transition: color 0.2s;
+            letter-spacing: 0.1px;
+        }
+
+        .nav-links a:hover { color: var(--text-1); }
+
+        .nav-cta {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent) !important;
+            border: 1px solid rgba(59,130,246,0.3);
+            padding: 6px 16px;
+            border-radius: 6px;
+            transition: background 0.2s, border-color 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-dim) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
+        }
+
+        /* --- HERO --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 24px 60px;
+            position: relative;
+        }
+
+        .hero-grid {
+            max-width: 1100px;
+            margin: 0 auto;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
-        
-        .particle {
-            position: absolute;
-            background: #007aff;
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--green);
+            background: var(--green-dim);
+            border: 1px solid rgba(34,197,94,0.2);
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--green);
             border-radius: 50%;
-            animation: particle-float 20s infinite linear;
+            animation: pulse 2s infinite;
         }
-        
-        @keyframes particle-float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
-        
-        /* Dark mode styles */
-        .dark-mode {
-            background: #0a0a0a;
-            color: #ffffff;
+
+        .hero-name {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            color: var(--text-1);
         }
-        
-        .dark-mode .card-hover {
-            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+
+        .hero-name span { color: var(--accent); }
+
+        .hero-role {
+            font-size: 18px;
+            color: var(--text-2);
+            margin-bottom: 20px;
+            font-weight: 400;
         }
-        
-        .dark-mode .card-hover:hover {
-            background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+
+        .hero-desc {
+            font-size: 15px;
+            color: var(--text-2);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
         }
-        
-        /* Fix text visibility */
-        .text-white {
-            color: #ffffff !important;
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 36px;
         }
-        
-        .text-gray-300 {
-            color: #d1d5db !important;
+
+        .tag {
+            font-size: 12px;
+            color: var(--text-2);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            letter-spacing: 0.2px;
         }
-        
-        .text-gray-400 {
-            color: #9ca3af !important;
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        
-        /* Ensure proper contrast for all text */
-        .glow {
-            color: #ffffff;
+
+        .btn-primary {
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            background: var(--accent);
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .glow h1, .glow h2, .glow h3, .glow h4, .glow h5, .glow h6 {
-            color: #ffffff !important;
+
+        .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        .btn-ghost {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-2);
+            background: transparent;
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: 1px solid var(--border-2);
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .glow p, .glow span, .glow div {
-            color: #e5e7eb !important;
+
+        .btn-ghost:hover { border-color: var(--border-2); color: var(--text-1); transform: translateY(-1px); }
+
+        /* Hero right — terminal */
+        .hero-terminal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
         }
-        
-        /* Ensure sections are visible */
+
+        .terminal-bar {
+            background: var(--surface-2);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+
+        .terminal-title {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 12px;
+            color: var(--text-3);
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .t-comment { color: #555; }
+        .t-key { color: #7dd3fc; }
+        .t-str { color: #86efac; }
+        .t-num { color: #fbbf24; }
+        .t-bool { color: #f472b6; }
+        .t-punc { color: #888; }
+        .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--accent); vertical-align: middle; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* --- STATS STRIP --- */
+        .stats-strip {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-item {
+            padding: 28px 24px;
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-1);
+            margin-bottom: 4px;
+        }
+
+        .stat-value span { color: var(--accent); }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-2);
+        }
+
+        /* --- SECTION LAYOUT --- */
         section {
+            padding: 96px 24px;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-1);
+            margin-bottom: 12px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--text-2);
+            max-width: 520px;
+            margin-bottom: 56px;
+            line-height: 1.6;
+        }
+
+        /* --- EXPERIENCE --- */
+        .exp-list { display: flex; flex-direction: column; gap: 2px; }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .exp-item:first-child { border-top: 1px solid var(--border); }
+
+        .exp-meta { padding-top: 2px; }
+
+        .exp-period {
+            font-size: 12px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            color: var(--text-3);
+            margin-bottom: 6px;
+        }
+
+        .exp-company {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-2);
+        }
+
+        .exp-company a { color: var(--accent); transition: opacity 0.2s; }
+        .exp-company a:hover { opacity: 0.8; }
+
+        .exp-content {}
+
+        .exp-role {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-1);
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .exp-bullets li {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.65;
+            padding-left: 16px;
             position: relative;
-            z-index: 1;
         }
-        
-        /* Fix any potential visibility issues */
-        .card-hover {
-            background: rgba(255, 255, 255, 0.1) !important;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .exp-bullets li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-3);
+            font-size: 12px;
+            top: 3px;
         }
-        
-        .card-hover:hover {
-            background: rgba(255, 255, 255, 0.15) !important;
+
+        .exp-bullets strong { color: var(--text-1); font-weight: 500; }
+
+        .exp-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
         }
-        
-        /* Ensure text is always visible */
-        .text-white {
-            color: #ffffff !important;
+
+        .stack-tag {
+            font-size: 11px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            color: var(--text-3);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 3px 8px;
+            border-radius: 4px;
         }
-        
-        .text-gray-300 {
-            color: #d1d5db !important;
+
+        /* --- PROJECTS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
-        
-        .text-gray-400 {
-            color: #9ca3af !important;
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: border-color 0.2s, transform 0.2s;
+            cursor: default;
         }
-        
-        /* Additional visibility fixes */
-        #projects, #experience {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+
+        .project-card:hover {
+            border-color: var(--border-2);
+            transform: translateY(-2px);
         }
-        
-        #projects .glow, #experience .glow {
-            background: rgba(255, 255, 255, 0.15) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+        .project-card.featured {
+            grid-column: span 2;
+            background: var(--surface);
+            border-color: rgba(59,130,246,0.2);
         }
-        
-        #projects .glow:hover, #experience .glow:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
         }
-        
-        /* Ensure all text in these sections is visible */
-        #projects h3, #experience h3 {
-            color: #ffffff !important;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+        .project-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(59,130,246,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
-        
-        #projects p, #experience p, #projects li, #experience li {
-            color: #e5e7eb !important;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+        .project-icon svg { width: 16px; height: 16px; color: var(--accent); }
+
+        .project-links { display: flex; gap: 8px; }
+
+        .project-link {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-3);
+            transition: color 0.2s, border-color 0.2s;
         }
-        
-        /* Scroll indicator */
-        .scroll-indicator {
+
+        .project-link:hover { color: var(--text-1); border-color: var(--border-2); }
+        .project-link svg { width: 13px; height: 13px; }
+
+        .project-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-1);
+            letter-spacing: -0.3px;
+        }
+
+        .project-sub {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .project-desc {
+            font-size: 13.5px;
+            color: var(--text-2);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .project-desc strong { color: var(--text-1); font-weight: 500; }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+        }
+
+        .skill-group {
+            padding: 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .skill-group:first-child { border-radius: 12px 0 0 0; }
+        .skill-group:nth-child(2) { border-radius: 0 12px 0 0; }
+        .skill-group:nth-last-child(2) { border-radius: 0 0 0 12px; }
+        .skill-group:last-child { border-radius: 0 0 12px 0; }
+        .skill-group:only-child { border-radius: 12px; }
+
+        .skill-group-title {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 14px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-pill {
+            font-size: 13px;
+            color: var(--text-2);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 6px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .skill-pill:hover { color: var(--text-1); border-color: var(--border-2); }
+
+        .skill-pill.highlight {
+            color: var(--accent);
+            background: var(--accent-dim-2);
+            border-color: rgba(59,130,246,0.2);
+        }
+
+        /* --- CONTACT --- */
+        #contact { background: var(--surface); border-top: 1px solid var(--border); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-left {}
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-2);
+        }
+
+        .contact-row svg { width: 16px; height: 16px; color: var(--text-3); flex-shrink: 0; }
+        .contact-row a { color: var(--text-2); transition: color 0.2s; }
+        .contact-row a:hover { color: var(--accent); }
+
+        .contact-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-2);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .social-btn svg { width: 15px; height: 15px; }
+        .social-btn:hover { color: var(--text-1); border-color: var(--border-2); }
+
+        /* Form */
+        .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+        .form-label { font-size: 12px; font-weight: 500; color: var(--text-2); letter-spacing: 0.3px; }
+
+        .form-input, .form-textarea {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 14px;
+            color: var(--text-1);
+            font-family: inherit;
+            transition: border-color 0.2s;
+            outline: none;
+            resize: none;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: rgba(59,130,246,0.5);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-left { font-size: 13px; color: var(--text-3); }
+
+        .footer-right {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-right a { font-size: 13px; color: var(--text-3); transition: color 0.2s; }
+        .footer-right a:hover { color: var(--text-2); }
+
+        /* Progress bar on top */
+        #progress {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #007aff, #00d4ff, #ff6b6b);
-            transform-origin: left;
-            z-index: 1000;
+            height: 2px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 200;
+            transition: width 0.1s linear;
         }
-        
-        /* Modern button */
-        .modern-btn {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(45deg, #007aff, #00d4ff);
-            border: none;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .hero-terminal { display: none; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .exp-item { grid-template-columns: 1fr; gap: 8px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-card.featured { grid-column: span 1; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-group { border-radius: 0 !important; }
+            .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+            .nav-links { display: none; }
+            .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
         }
-        
-        .modern-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+
+        /* Subtle fade-in on scroll */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        
-        .modern-btn:hover::before {
-            left: 100%;
-        }
-        
-        .modern-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.4);
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white font-sans overflow-x-hidden">
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" id="scrollIndicator"></div>
-    
-    <!-- Particle Background -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-black/20 backdrop-blur-md z-50 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-xl font-semibold gradient-text">Shivansh Dwivedi</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-white/80 hover:text-white transition-colors relative group">
-                        About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="#skills" class="text-white/80 hover:text-white transition-colors relative group">
-                        Skills
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="#projects" class="text-white/80 hover:text-white transition-colors relative group">
-                        Projects
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="#experience" class="text-white/80 hover:text-white transition-colors relative group">
-                        Experience
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="#contact" class="text-white/80 hover:text-white transition-colors relative group">
-                        Contact
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                </div>
-                <button id="themeToggle" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
-                    <span id="themeIcon">🌙</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <!-- Terminal-style code block -->
-            <div class="code-block max-w-4xl mx-auto mb-8 text-left">
-                <div class="flex items-center mb-4">
-                    <div class="flex space-x-2">
-                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <span class="ml-4 text-gray-400">shivansh@portfolio:~$</span>
-                </div>
-                <div class="space-y-2">
-                    <div class="typing-animation">
-                        <span class="text-blue-400">const</span> <span class="text-yellow-400">developer</span> = {<br>
-                        &nbsp;&nbsp;<span class="text-green-400">name</span>: <span class="text-orange-400">"Shivansh Dwivedi"</span>,<br>
-                        &nbsp;&nbsp;<span class="text-green-400">role</span>: <span class="text-orange-400">"Senior Full Stack Engineer"</span>,<br>
-                        &nbsp;&nbsp;<span class="text-green-400">experience</span>: <span class="text-orange-400">"3+ years"</span>,<br>
-                        &nbsp;&nbsp;<span class="text-green-400">location</span>: <span class="text-orange-400">"Bengaluru, India"</span>,<br>
-                        &nbsp;&nbsp;<span class="text-green-400">skills</span>: [<span class="text-orange-400">"React"</span>, <span class="text-orange-400">"Node.js"</span>, <span class="text-orange-400">"WebRTC"</span>, <span class="text-orange-400">"Twilio"</span>, <span class="text-orange-400">"AWS Chime"</span>],<br>
-                        &nbsp;&nbsp;<span class="text-green-400">domains</span>: [<span class="text-orange-400">"Healthcare"</span>, <span class="text-orange-400">"Real-Time Systems"</span>, <span class="text-orange-400">"ABDM"</span>],<br>
-                        &nbsp;&nbsp;<span class="text-green-400">visa</span>: <span class="text-orange-400">"US B1/B2 — available for onsite travel"</span><br>
-                        };
-                    </div>
-                    <div class="cursor text-green-400">_</div>
-                </div>
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">sd<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-grid">
+        <div>
+            <div class="hero-badge">Available for SDE-2 roles · Immediate joiner</div>
+            <h1 class="hero-name">Shivansh<br><span>Dwivedi</span></h1>
+            <p class="hero-role">Senior Full Stack Engineer</p>
+            <p class="hero-desc">
+                3+ years building production-grade systems across healthcare, financial services, and government health infrastructure. Specialised in real-time communication (WebRTC, Twilio, AWS Chime) and HIPAA/ABDM-compliant architectures.
+            </p>
+            <div class="hero-tags">
+                <span class="tag">React.js</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">WebRTC</span>
+                <span class="tag">AWS</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">US B1/B2 Visa</span>
             </div>
-            
-            <!-- Main heading with typing effect -->
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-                <span class="gradient-text">Shivansh Dwivedi</span>
-            </h1>
-            
-            <!-- Animated subtitle -->
-            <div class="text-2xl sm:text-3xl mb-4">
-                <span class="typing-animation inline-block">Senior Full Stack Engineer</span>
-            </div>
-            
-            <!-- Floating tech icons -->
-            <div class="flex justify-center space-x-8 mb-8">
-                <div class="float text-4xl" style="animation-delay: 0s;">⚛️</div>
-                <div class="float text-4xl" style="animation-delay: 1s;">🚀</div>
-                <div class="float text-4xl" style="animation-delay: 2s;">💻</div>
-                <div class="float text-4xl" style="animation-delay: 3s;">🔧</div>
-            </div>
-            
-            <!-- Contact info with glow effect -->
-            <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <div class="flex items-center justify-center">
-                        <span class="mr-2">📍</span>
-                        <span>Bangalore, India</span>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <span class="mr-2">📧</span>
-                        <a href="mailto:shivansh.sd8@gmail.com" class="hover:text-blue-400 transition-colors">shivansh.sd8@gmail.com</a>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <span class="mr-2">📱</span>
-                        <a href="tel:+919119818961" class="hover:text-blue-400 transition-colors">+91-9119818961</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modern action buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" class="modern-btn inline-block text-center">
-                    <span class="relative z-10">Hire Me</span>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Contact me
                 </a>
-                <a href="#" class="modern-btn inline-block text-center bg-gradient-to-r from-purple-500 to-pink-500">
-                    <span class="relative z-10">Download Resume</span>
+                <a href="https://shivansh-sd8.github.io/" class="btn-ghost" target="_blank">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    GitHub
                 </a>
-                <a href="#projects" class="modern-btn inline-block text-center bg-gradient-to-r from-green-500 to-teal-500">
-                    <span class="relative z-10">View Projects</span>
+                <a href="https://www.linkedin.com/in/shivansh-dwivedi/" class="btn-ghost" target="_blank">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
                 </a>
             </div>
         </div>
-    </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 gradient-text">About Me</h2>
-            
-            <!-- Stats Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="text-3xl font-bold text-blue-400 mb-2">3+</div>
-                    <div class="text-sm text-gray-300">Years Experience</div>
-                </div>
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="text-3xl font-bold text-green-400 mb-2">10K+</div>
-                    <div class="text-sm text-gray-300">Users Served</div>
-                </div>
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="text-3xl font-bold text-purple-400 mb-2">99.9%</div>
-                    <div class="text-sm text-gray-300">Uptime</div>
-                </div>
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="text-3xl font-bold text-orange-400 mb-2">&lt;200ms</div>
-                    <div class="text-sm text-gray-300">Response Time</div>
-                </div>
+        <div class="hero-terminal">
+            <div class="terminal-bar">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+                <span class="terminal-title">profile.ts</span>
             </div>
-            
-            <!-- Main content with code-like styling -->
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <div class="code-block">
-                        <div class="text-green-400 mb-4">// Professional Summary</div>
-                        <div class="text-white">
-                            <span class="text-blue-400">const</span> <span class="text-yellow-400">profile</span> = {<br>
-                            &nbsp;&nbsp;<span class="text-green-400">role</span>: <span class="text-orange-400">"Senior Full Stack Developer"</span>,<br>
-                            &nbsp;&nbsp;<span class="text-green-400">experience</span>: <span class="text-orange-400">"3+ years"</span>,<br>
-                            &nbsp;&nbsp;<span class="text-green-400">specialization</span>: [<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-400">"React.js"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-400">"Node.js"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-400">"TypeScript"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-400">"Microservices"</span><br>
-                            &nbsp;&nbsp;],<br>
-                            &nbsp;&nbsp;<span class="text-green-400">achievements</span>: <span class="text-orange-400">"10K+ users, 99.9% uptime"</span><br>
-                            };
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                        <h3 class="text-2xl font-bold mb-4 gradient-text">What I Do</h3>
-                        <ul class="space-y-4 text-gray-300">
-                            <li class="flex items-start">
-                                <span class="text-blue-400 mr-3 mt-1">📡</span>
-                                <span>Building vendor-agnostic real-time SDKs over WebRTC, Twilio, and AWS Chime for telehealth streaming platforms</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-green-400 mr-3 mt-1">🏥</span>
-                                <span>Architecting HIPAA and ABDM-compliant systems — registered HIP/HIU on India's national health data network</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-purple-400 mr-3 mt-1">🚀</span>
-                                <span>Founding engineer experience — built and shipped full-stack products from 0 to production as sole engineer</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-orange-400 mr-3 mt-1">⚡</span>
-                                <span>Systems handling 1,000+ concurrent users with sub-200ms response times and 99.9% uptime</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Passion section -->
-            <div class="mt-16 text-center">
-                <div class="glow bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold mb-4 gradient-text">My Passion</h3>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Passionate about <span class="text-blue-400 font-semibold">Real-Time Systems</span>, 
-                        <span class="text-green-400 font-semibold">System Design</span>, 
-                        <span class="text-purple-400 font-semibold">Healthcare Tech</span>, and 
-                        <span class="text-orange-400 font-semibold">Product Building</span>. 
-                        Open to SDE-2 and Senior Full Stack roles at product-first companies. 
-                        US B1/B2 visa holder — available for onsite travel.
-                    </p>
-                </div>
+            <div class="terminal-body">
+                <span class="t-comment">// Senior Full Stack Engineer</span><br>
+                <span class="t-key">const</span> engineer = {<br>
+                &nbsp;&nbsp;<span class="t-key">name</span>: <span class="t-str">"Shivansh Dwivedi"</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">location</span>: <span class="t-str">"Bengaluru, India"</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">yoe</span>: <span class="t-num">3.2</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">specialisation</span>: [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"WebRTC"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Twilio / AWS Chime"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HIPAA / ABDM"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Full-Stack Product Eng"</span><br>
+                &nbsp;&nbsp;],<br>
+                &nbsp;&nbsp;<span class="t-key">visa</span>: <span class="t-str">"US B1/B2"</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">openToWork</span>: <span class="t-bool">true</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">noticePeriod</span>: <span class="t-str">"Immediate"</span><br>
+                };<br><br>
+                <span class="t-comment">// Currently building at</span><br>
+                <span class="t-key">const</span> current = <span class="t-str">"Sutherland Global"</span>;<br><br>
+                <span class="t-key">export default</span> engineer;<span class="t-cursor"></span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 gradient-text">Skills & Technologies</h2>
-            
-            <!-- Skills with progress bars -->
-            <div class="grid md:grid-cols-2 gap-12 mb-16">
-                <!-- Frontend Skills -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-400 flex items-center">
-                        <span class="mr-3">⚛️</span>
-                        Frontend Development
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">React.js</span>
-                                <span class="text-green-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">TypeScript</span>
-                                <span class="text-green-400">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">Next.js</span>
-                                <span class="text-green-400">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">Tailwind CSS</span>
-                                <span class="text-green-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="95%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend Skills -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-green-400 flex items-center">
-                        <span class="mr-3">🚀</span>
-                        Backend Development
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">Node.js</span>
-                                <span class="text-green-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">Express.js</span>
-                                <span class="text-green-400">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">Python</span>
-                                <span class="text-green-400">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-white">REST APIs</span>
-                                <span class="text-green-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="skill-bar h-2 rounded-full" data-width="95%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Technology Tags -->
-            <div class="space-y-8">
-                <h3 class="text-2xl font-bold text-center gradient-text">Technologies I Work With</h3>
-                
-                <!-- Languages -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                    <h4 class="text-xl font-semibold mb-6 text-blue-400">Programming Languages</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">JavaScript</span>
-                        <span class="skill-tag bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">TypeScript</span>
-                        <span class="skill-tag bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Python</span>
-                        <span class="skill-tag bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">C++</span>
-                        <span class="skill-tag bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">SQL</span>
-                        <span class="skill-tag bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">NoSQL</span>
-                    </div>
-                </div>
-
-                <!-- Real-Time & Streaming -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                    <h4 class="text-xl font-semibold mb-6 text-red-400">Real-Time & Streaming</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">WebRTC</span>
-                        <span class="skill-tag bg-gradient-to-r from-pink-500 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Twilio</span>
-                        <span class="skill-tag bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">AWS Chime SDK</span>
-                        <span class="skill-tag bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Firebase</span>
-                        <span class="skill-tag bg-gradient-to-r from-gray-500 to-gray-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Socket.io</span>
-                    </div>
-                </div>
-
-                <!-- Cloud & DevOps -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                    <h4 class="text-xl font-semibold mb-6 text-green-400">Cloud & DevOps</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">AWS</span>
-                        <span class="skill-tag bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Docker</span>
-                        <span class="skill-tag bg-gradient-to-r from-blue-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">DigitalOcean</span>
-                        <span class="skill-tag bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">GitHub Actions</span>
-                        <span class="skill-tag bg-gradient-to-r from-teal-500 to-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Nginx</span>
-                        <span class="skill-tag bg-gradient-to-r from-pink-500 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">PM2</span>
-                    </div>
-                </div>
-
-                <!-- Databases -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                    <h4 class="text-xl font-semibold mb-6 text-purple-400">Databases & ORMs</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">MongoDB</span>
-                        <span class="skill-tag bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">PostgreSQL</span>
-                        <span class="skill-tag bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Redis</span>
-                        <span class="skill-tag bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">Prisma ORM</span>
-                        <span class="skill-tag bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-110 transition-transform">BullMQ</span>
-                    </div>
-                </div>
-            </div>
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-value">3<span>+</span></div>
+            <div class="stat-label">Years of experience</div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-transparent to-black/20">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1: AbhaAyushman -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
-                    <div class="mb-4">
-                        <h3 class="text-xl font-semibold mb-2 text-white">AbhaAyushman — ABDM-Compliant HIMS</h3>
-                        <p class="text-gray-300 text-sm">Production-grade hospital management system registered as HIP/HIU on India's national health network</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs border border-blue-500/30">Node.js</span>
-                        <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs border border-green-500/30">PostgreSQL</span>
-                        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs border border-purple-500/30">React 18</span>
-                        <span class="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-xs border border-orange-500/30">Prisma</span>
-                        <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs border border-red-500/30">BullMQ</span>
-                        <span class="bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded text-xs border border-indigo-500/30">Redis</span>
-                    </div>
-                    <p class="text-gray-300 text-sm mb-4">
-                        ABHA registration, FHIR-structured EMR records, OPD/IPD workflows with 10-state encounter state machine, multi-tenant SaaS with 10+ RBAC roles.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.abhaayushman.com/landing" target="_blank" class="text-blue-400 hover:text-blue-300 hover:underline text-sm">Live Site</a>
-                        <a href="https://github.com/shivansh-sd8/abdmcare-backend" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline text-sm">Backend</a>
-                        <a href="https://github.com/shivansh-sd8/abdmcare-frontend" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline text-sm">Frontend</a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Tripme Global -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
-                    <div class="mb-4">
-                        <h3 class="text-xl font-semibold mb-2 text-white">Tripme Global — Travel Marketplace</h3>
-                        <p class="text-gray-300 text-sm">Built end-to-end as sole engineer — Airbnb-style accommodation and experiences platform</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs border border-blue-500/30">Next.js 16</span>
-                        <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs border border-green-500/30">Node.js</span>
-                        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs border border-purple-500/30">MongoDB</span>
-                        <span class="bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded text-xs border border-indigo-500/30">Razorpay</span>
-                        <span class="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-xs border border-orange-500/30">DigitalOcean</span>
-                    </div>
-                    <p class="text-gray-300 text-sm mb-4">
-                        28 data models, automated payment reconciliation cron, 3-tier pricing engine, multi-role auth, KYC verification. Deployed via GitHub Actions CI/CD.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://tripmeglobal.com" target="_blank" class="text-blue-400 hover:text-blue-300 hover:underline text-sm">Live Site</a>
-                    </div>
-                </div>
-
-                <!-- Project 3: DevConnect -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
-                    <div class="mb-4">
-                        <h3 class="text-xl font-semibold mb-2 text-white">DevConnect — Developer Social Platform</h3>
-                        <p class="text-gray-300 text-sm">Full-stack social platform with 500+ active users</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs border border-blue-500/30">React.js</span>
-                        <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs border border-green-500/30">Node.js</span>
-                        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs border border-purple-500/30">MongoDB</span>
-                        <span class="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-xs border border-orange-500/30">Socket.io</span>
-                        <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs border border-red-500/30">Redis</span>
-                    </div>
-                    <p class="text-gray-300 text-sm mb-4">
-                        Real-time messaging via Socket.io, Redis-cached activity feed for sub-100ms load times, JWT auth, and advanced developer profile search.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://dev-connect-client-delta.vercel.app/" target="_blank" class="text-blue-400 hover:text-blue-300 hover:underline text-sm">Live Demo</a>
-                        <a href="https://github.com/shivansh-sd8/devconnect" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline text-sm">GitHub</a>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-item">
+            <div class="stat-value">1K<span>+</span></div>
+            <div class="stat-label">Concurrent users handled</div>
         </div>
-    </section>
+        <div class="stat-item">
+            <div class="stat-value">99.9<span>%</span></div>
+            <div class="stat-label">Platform uptime</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">&lt;200<span>ms</span></div>
+            <div class="stat-label">P95 response time</div>
+        </div>
+    </div>
+</div>
 
-    <!-- Professional Experience Section -->
-    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-black/20 to-transparent">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 gradient-text">Professional Experience</h2>
-            <div class="space-y-8">
-                <!-- Current Role -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8 card-hover">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Senior Software Engineer — Healthcare Streaming Platform</h3>
-                            <p class="text-blue-400 font-medium">Sutherland Global Services</p>
-                            <p class="text-gray-300 text-sm">Bengaluru, Karnataka | August 2025 – Present</p>
-                        </div>
-                    </div>
-                    <ul class="text-gray-300 space-y-2 text-sm">
-                        <li>• Built two vendor-agnostic SDKs (AV calling + media streaming) using the Factory Pattern over Twilio and AWS Chime — eliminated ~60% code duplication; vendor switch requires a single config change</li>
-                        <li>• Consolidated Twilio, Chime, and Firebase into a single unified backend — reduced surface area by ~40% and cut session API response time by ~35%</li>
-                        <li>• Built real-time multi-stream layer for HIPAA-compliant telehealth: console screen + 3 live camera feeds over WebRTC with sub-second latency</li>
-                        <li>• Developed 3-mode remote session control system (View / Control / Supervise) with permission-gated flows and privileged no-approval override for senior operators</li>
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="section-inner">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Where I've worked</h2>
+        <p class="section-sub">Building production systems across IT services, startups, and healthcare technology.</p>
+
+        <div class="exp-list">
+
+            <div class="exp-item fade-up">
+                <div class="exp-meta">
+                    <div class="exp-period">Aug 2025 — Present</div>
+                    <div class="exp-company">Sutherland Global</div>
+                </div>
+                <div class="exp-content">
+                    <div class="exp-role">Senior Software Engineer — Healthcare Streaming Platform</div>
+                    <ul class="exp-bullets">
+                        <li>Designed two <strong>vendor-agnostic SDKs</strong> (AV calling + media streaming) using the <strong>Factory Pattern</strong> over Twilio and AWS Chime — eliminated ~60% cross-cutting code duplication; vendor switch requires a single config change with zero consumer-side refactoring</li>
+                        <li>Consolidated fragmented Twilio, Chime, and Firebase integrations into a <strong>single unified backend</strong> — standardised session contracts across all three providers, reduced backend surface area by ~40% and cut session API response time by ~35%</li>
+                        <li>Built the <strong>real-time multi-stream layer</strong> for HIPAA-compliant telehealth: simultaneous console screen + 3 live camera feeds over WebRTC, coordinating ISA-side publish and RU-side subscribe pipelines</li>
+                        <li>Developed a <strong>3-mode remote session control system</strong> (View / Control / Supervise) with permission-gated approval flows and a privileged no-approval override for senior operators</li>
                     </ul>
-                </div>
-
-                <!-- Founding Engineer -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8 card-hover">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Founding Engineer — Full Stack</h3>
-                            <p class="text-green-400 font-medium"><a href="https://tripmeglobal.com" target="_blank" class="hover:underline">Tripme Global</a></p>
-                            <p class="text-gray-300 text-sm">Bengaluru, Karnataka | April 2025 – July 2025</p>
-                        </div>
+                    <div class="exp-stack">
+                        <span class="stack-tag">WebRTC</span>
+                        <span class="stack-tag">Twilio</span>
+                        <span class="stack-tag">AWS Chime</span>
+                        <span class="stack-tag">Firebase</span>
+                        <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">TypeScript</span>
+                        <span class="stack-tag">React.js</span>
                     </div>
-                    <ul class="text-gray-300 space-y-2 text-sm">
-                        <li>• Sole engineer — designed and built entire platform from scratch: 28 Mongoose models, 22 REST API modules, deployed to DigitalOcean via GitHub Actions CI/CD with PM2 and Nginx</li>
-                        <li>• Engineered Razorpay payment integration end-to-end with HMAC webhook verification, idempotency keys, and automated reconciliation cron for stuck UPI payments</li>
-                        <li>• Built 3-tier dynamic pricing engine with GST, host earning splits, security deposits, and coupon application — full financial breakdown stored per transaction</li>
-                        <li>• Transitioned after successful production launch to pursue senior engineering role with broader system design scope</li>
-                    </ul>
-                </div>
-
-                <!-- Wipro Experience -->
-                <div class="glow bg-white/10 backdrop-blur-sm rounded-2xl p-8 card-hover">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Software Engineer</h3>
-                            <p class="text-purple-400 font-medium">Wipro — Client: AustralianSuper</p>
-                            <p class="text-gray-300 text-sm">Bengaluru, Karnataka | April 2024 – March 2025</p>
-                        </div>
-                    </div>
-                    <ul class="text-gray-300 space-y-2 text-sm">
-                        <li>• Led legacy payroll system migration — optimised SQL via composite indexing, eliminated redundant joins, introduced cursor-based pagination; reduced query execution time by 20%</li>
-                        <li>• Engineered RESTful APIs with Express.js for the member portal with JWT + OAuth 2.0 authentication and role-based access control</li>
-                        <li>• Improved React frontend performance through code splitting, lazy loading, and bundle optimisation; measurably reduced initial load time and improved Core Web Vitals</li>
-                        <li>• Collaborated cross-timezone with Melbourne engineering team in 2-week Agile sprints</li>
-                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 gradient-text">Get In Touch</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-6 text-white">Let's Connect</h3>
-                    <p class="text-gray-300 mb-8 text-lg">
-                        I'm always interested in new opportunities, whether it's building amazing products, 
-                        discussing system architecture, or exploring the latest in AI and technology.
-                    </p>
-                    <div class="space-y-6">
-                        <div class="flex items-center glow bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <span class="text-blue-400 mr-4 text-2xl">📧</span>
-                            <a href="mailto:shivansh.sd8@gmail.com" class="text-white hover:text-blue-400 transition-colors text-lg">
-                                shivansh.sd8@gmail.com
-                            </a>
-                        </div>
-                        <div class="flex items-center glow bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <span class="text-green-400 mr-4 text-2xl">📱</span>
-                            <a href="tel:+919119818961" class="text-white hover:text-green-400 transition-colors text-lg">
-                                +91-9119818961
-                            </a>
-                        </div>
-                        <div class="flex items-center glow bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <span class="text-purple-400 mr-4 text-2xl">📍</span>
-                            <span class="text-white text-lg">Bangalore, India</span>
-                        </div>
-                        <div class="flex items-center glow bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <span class="text-orange-400 mr-4 text-2xl">✈️</span>
-                            <span class="text-white text-lg">US B1/B2 Visa — available for onsite travel</span>
-                        </div>
+            <div class="exp-item fade-up">
+                <div class="exp-meta">
+                    <div class="exp-period">Apr 2025 — Jul 2025</div>
+                    <div class="exp-company"><a href="https://tripmeglobal.com" target="_blank">Tripme Global ↗</a></div>
+                </div>
+                <div class="exp-content">
+                    <div class="exp-role">Founding Engineer — Full Stack</div>
+                    <ul class="exp-bullets">
+                        <li>Sole engineer — designed and built the entire platform from scratch: <strong>28 Mongoose models</strong>, 22 REST API modules, 21 controllers, and 8 service layers; deployed to DigitalOcean via GitHub Actions CI/CD with PM2 and Nginx</li>
+                        <li>Engineered <strong>Razorpay integration end-to-end</strong> — HMAC webhook verification (timing-safe), idempotency-key-based duplicate prevention, and automated reconciliation cron recovering stuck UPI payments every 12 minutes</li>
+                        <li>Built a <strong>3-tier dynamic pricing engine</strong> with GST, host earning splits, cleaning fees, security deposits, and coupon application — full financial breakdown stored per transaction for audit</li>
+                        <li>Implemented <strong>multi-role auth</strong> (Guest/Host/Admin), Helmet CSP, tiered rate limiting, NoSQL injection sanitization, and structured audit logging</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="stack-tag">Next.js 16</span>
+                        <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">MongoDB</span>
+                        <span class="stack-tag">Razorpay</span>
+                        <span class="stack-tag">Cloudinary</span>
+                        <span class="stack-tag">Redis</span>
+                        <span class="stack-tag">DigitalOcean</span>
+                        <span class="stack-tag">Nginx</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-item fade-up">
+                <div class="exp-meta">
+                    <div class="exp-period">Apr 2024 — Mar 2025</div>
+                    <div class="exp-company">Wipro — AustralianSuper</div>
+                </div>
+                <div class="exp-content">
+                    <div class="exp-role">Software Engineer (Project Engineer L1)</div>
+                    <ul class="exp-bullets">
+                        <li>Led <strong>legacy payroll system migration</strong> — composite indexing, eliminated redundant joins, cursor-based pagination; reduced query execution time by <strong>20%</strong></li>
+                        <li>Built RESTful APIs with Express.js for the member portal with JWT + OAuth 2.0 authentication and role-based access control</li>
+                        <li>Improved React frontend performance via code splitting, lazy loading, and bundle optimisation — measurably reduced initial load time and improved Core Web Vitals</li>
+                        <li>Collaborated cross-timezone with Melbourne engineering team in 2-week Agile sprints; zero-regression delivery across 4 consecutive sprints</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="stack-tag">React.js</span>
+                        <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">Express.js</span>
+                        <span class="stack-tag">PostgreSQL</span>
+                        <span class="stack-tag">JWT</span>
+                        <span class="stack-tag">OAuth 2.0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-item fade-up">
+                <div class="exp-meta">
+                    <div class="exp-period">Mar 2023 — Apr 2024</div>
+                    <div class="exp-company">Wipro — CloudCar R&D</div>
+                </div>
+                <div class="exp-content">
+                    <div class="exp-role">Software Engineer (Project Engineer)</div>
+                    <ul class="exp-bullets">
+                        <li>Built <strong>real-time telemetry pipelines</strong> for autonomous vehicle data using Node.js and AWS, enabling cloud-based predictive maintenance and fleet health monitoring</li>
+                        <li>Provisioned AWS infrastructure (EC2, S3, CloudFront, Lambda) for vehicle data ingestion and low-latency content delivery to edge devices</li>
+                        <li>Developed fleet analytics dashboard in React.js surfacing live vehicle health metrics, GPS tracking, and route optimisation data</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">AWS</span>
+                        <span class="stack-tag">React.js</span>
+                        <span class="stack-tag">EC2</span>
+                        <span class="stack-tag">Lambda</span>
+                        <span class="stack-tag">S3</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-inner">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">Things I've built</h2>
+        <p class="section-sub">Production systems across healthcare, travel, and social infrastructure.</p>
+
+        <div class="projects-grid">
+
+            <!-- AbhaAyushman — featured -->
+            <div class="project-card featured fade-up">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/shivansh-sd8/abdmcare-backend" target="_blank" class="project-link" title="Backend repo">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        </a>
+                        <a href="https://github.com/shivansh-sd8/abdmcare-frontend" target="_blank" class="project-link" title="Frontend repo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </a>
+                        <a href="https://www.abhaayushman.com/landing" target="_blank" class="project-link" title="Live site">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
                     </div>
                 </div>
                 <div>
-                    <form class="space-y-6 glow bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-white mb-2">Name</label>
-                            <input type="text" id="name" name="name" 
-                                   class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all text-white placeholder-gray-400"
-                                   placeholder="Your name">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-white mb-2">Email</label>
-                            <input type="email" id="email" name="email" 
-                                   class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all text-white placeholder-gray-400"
-                                   placeholder="your.email@example.com">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-white mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" 
-                                      class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all resize-none text-white placeholder-gray-400"
-                                      placeholder="Your message..."></textarea>
-                        </div>
-                        <button type="submit" 
-                                class="w-full modern-btn">
-                            Send Message
-                        </button>
-                    </form>
+                    <div class="project-name">AbhaAyushman</div>
+                    <div class="project-sub">ABDM-Compliant Hospital Information Management System</div>
+                </div>
+                <p class="project-desc">
+                    Production-grade HIMS integrating with India's <strong>Ayushman Bharat Digital Mission</strong> as a registered <strong>HIP/HIU</strong>. Implemented ABHA registration, care-context linking, consent management, and <strong>FHIR-structured EMR records</strong> with RSA-encrypted payloads. OPD/IPD workflows with a <strong>10-state encounter state machine</strong>. Multi-tenant SaaS with <strong>10+ RBAC roles</strong>, subscription-tier feature gating, and hospitalId-scoped data isolation.
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Node.js</span>
+                    <span class="stack-tag">TypeScript</span>
+                    <span class="stack-tag">PostgreSQL</span>
+                    <span class="stack-tag">Prisma</span>
+                    <span class="stack-tag">React 18</span>
+                    <span class="stack-tag">Redux Toolkit</span>
+                    <span class="stack-tag">Redis</span>
+                    <span class="stack-tag">BullMQ</span>
+                    <span class="stack-tag">Material UI</span>
+                </div>
+            </div>
+
+            <!-- Tripme -->
+            <div class="project-card fade-up">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://tripmeglobal.com" target="_blank" class="project-link" title="Live site">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="project-name">Tripme Global</div>
+                    <div class="project-sub">Airbnb-style Travel Marketplace</div>
+                </div>
+                <p class="project-desc">
+                    Built end-to-end as sole engineer. <strong>28 Mongoose models</strong>, 22 API modules, Razorpay with automated payment reconciliation cron, 3-tier pricing engine, multi-role auth, KYC verification. Deployed via GitHub Actions to DigitalOcean with PM2 and Nginx.
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Next.js 16</span>
+                    <span class="stack-tag">MongoDB</span>
+                    <span class="stack-tag">Razorpay</span>
+                    <span class="stack-tag">Redis</span>
+                    <span class="stack-tag">DigitalOcean</span>
+                </div>
+            </div>
+
+            <!-- DevConnect -->
+            <div class="project-card fade-up">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/shivansh-sd8/devconnect" target="_blank" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        </a>
+                        <a href="https://dev-connect-client-delta.vercel.app/" target="_blank" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="project-name">DevConnect</div>
+                    <div class="project-sub">Developer Social Platform</div>
+                </div>
+                <p class="project-desc">
+                    Full-stack social platform with <strong>500+ active users</strong>. Real-time messaging via Socket.io, Redis-cached activity feed for sub-100ms load times, JWT auth, and advanced developer profile search.
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">React.js</span>
+                    <span class="stack-tag">Node.js</span>
+                    <span class="stack-tag">MongoDB</span>
+                    <span class="stack-tag">Socket.io</span>
+                    <span class="stack-tag">Redis</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="section-inner">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">Tech I work with</h2>
+        <p class="section-sub">Tools and technologies I use in production, not just tutorials.</p>
+
+        <div class="skills-grid">
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Real-Time & Streaming</div>
+                <div class="skill-tags">
+                    <span class="skill-pill highlight">WebRTC</span>
+                    <span class="skill-pill highlight">Twilio (Video/Voice)</span>
+                    <span class="skill-pill highlight">AWS Chime SDK</span>
+                    <span class="skill-pill highlight">Firebase</span>
+                    <span class="skill-pill">Socket.io</span>
+                    <span class="skill-pill">WebSocket</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Frontend</div>
+                <div class="skill-tags">
+                    <span class="skill-pill highlight">React.js</span>
+                    <span class="skill-pill highlight">Next.js 16</span>
+                    <span class="skill-pill highlight">TypeScript</span>
+                    <span class="skill-pill">Redux Toolkit</span>
+                    <span class="skill-pill">TanStack Query</span>
+                    <span class="skill-pill">Tailwind CSS</span>
+                    <span class="skill-pill">Material UI</span>
+                    <span class="skill-pill">Framer Motion</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Backend</div>
+                <div class="skill-tags">
+                    <span class="skill-pill highlight">Node.js</span>
+                    <span class="skill-pill highlight">Express.js</span>
+                    <span class="skill-pill">REST APIs</span>
+                    <span class="skill-pill">BullMQ</span>
+                    <span class="skill-pill">Prisma ORM</span>
+                    <span class="skill-pill">Microservices</span>
+                    <span class="skill-pill">HMAC / RSA</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Databases</div>
+                <div class="skill-tags">
+                    <span class="skill-pill highlight">PostgreSQL</span>
+                    <span class="skill-pill highlight">MongoDB</span>
+                    <span class="skill-pill highlight">Redis</span>
+                    <span class="skill-pill">Prisma</span>
+                    <span class="skill-pill">Mongoose</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Cloud & DevOps</div>
+                <div class="skill-tags">
+                    <span class="skill-pill highlight">AWS (EC2, S3, Lambda, CloudFront, RDS)</span>
+                    <span class="skill-pill">DigitalOcean</span>
+                    <span class="skill-pill">Docker</span>
+                    <span class="skill-pill">GitHub Actions CI/CD</span>
+                    <span class="skill-pill">Nginx</span>
+                    <span class="skill-pill">PM2</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Auth & Security</div>
+                <div class="skill-tags">
+                    <span class="skill-pill">JWT</span>
+                    <span class="skill-pill">OAuth 2.0</span>
+                    <span class="skill-pill">HIPAA Compliance</span>
+                    <span class="skill-pill">ABDM / FHIR</span>
+                    <span class="skill-pill">RBAC</span>
+                    <span class="skill-pill">Helmet CSP</span>
+                    <span class="skill-pill">Rate Limiting</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-black/50 backdrop-blur-sm text-white py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-semibold mb-2 gradient-text">Shivansh Dwivedi</h3>
-                    <p class="text-gray-300">Senior Full Stack Engineer | Healthcare & Real-Time Systems | Open to SDE-2 Roles</p>
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-inner">
+        <div class="contact-grid">
+            <div class="contact-left">
+                <div class="section-label">Contact</div>
+                <h2 class="section-title">Let's talk</h2>
+                <p style="font-size:15px; color: var(--text-2); line-height: 1.7; margin-top: 12px; max-width: 420px;">
+                    Open to SDE-2 and Senior Full Stack roles at product-first companies in Bengaluru. Immediate joiner. US B1/B2 visa holder — available for onsite travel.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:shivansh.sd8@gmail.com">shivansh.sd8@gmail.com</a>
+                    </div>
+                    <div class="contact-row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+                        <a href="tel:+919119818961">+91-9119818961</a>
+                    </div>
+                    <div class="contact-row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Bengaluru, India</span>
+                    </div>
+                    <div class="contact-row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        <span>US B1/B2 Visa — available for onsite travel</span>
+                    </div>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="mailto:shivansh.sd8@gmail.com" class="text-gray-300 hover:text-blue-400 transition-colors glow bg-white/10 rounded-lg px-4 py-2">
-                        📧 Email
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/shivansh-dwivedi/" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        LinkedIn
                     </a>
-                    <a href="https://linkedin.com/in/shivansh-dwivedi" class="text-gray-300 hover:text-blue-400 transition-colors glow bg-white/10 rounded-lg px-4 py-2">
-                        💼 LinkedIn
+                    <a href="https://github.com/shivansh-sd8" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        GitHub
                     </a>
-                    <a href="https://github.com/shivansh-sd8" class="text-gray-300 hover:text-white transition-colors glow bg-white/10 rounded-lg px-4 py-2">
-                        🐙 GitHub
+                    <a href="https://shivansh-sd8.github.io/" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Portfolio
                     </a>
                 </div>
             </div>
-            <div class="border-t border-white/20 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2026 Shivansh Dwivedi. All rights reserved.</p>
+
+            <div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" rows="5" placeholder="What's on your mind?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: fit-content;" id="submitBtn">
+                        Send message
+                    </button>
+                </form>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">© 2026 Shivansh Dwivedi · Bengaluru, India</div>
+        <div class="footer-right">
+            <a href="mailto:shivansh.sd8@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/shivansh-dwivedi/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/shivansh-sd8" target="_blank">GitHub</a>
+        </div>
+    </div>
+</footer>
 
-        // Scroll indicator
-        window.addEventListener('scroll', () => {
-            const scrollIndicator = document.getElementById('scrollIndicator');
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            scrollIndicator.style.transform = `scaleX(${scrollPercent / 100})`;
-        });
+<script>
+    // Scroll progress
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        document.getElementById('progress').style.width = (scrollTop / docHeight * 100) + '%';
+    });
 
-        // Particle background
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.textContent = '☀️';
-            } else {
-                themeIcon.textContent = '🌙';
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
             }
         });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-        // Typing animation
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        // Animate skill bars on scroll
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-bar');
-            skillBars.forEach((bar, index) => {
-                const rect = bar.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0 && !bar.classList.contains('animate')) {
-                    // Get the target width from data attribute
-                    const targetWidth = bar.getAttribute('data-width');
-                    bar.style.setProperty('--target-width', targetWidth);
-                    
-                    // Add delay for staggered effect
-                    setTimeout(() => {
-                        bar.classList.add('animate');
-                    }, index * 200);
-                }
-            });
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards
-        document.querySelectorAll('.card-hover, .glow').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Form submission (placeholder - no backend)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Add loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('bg-green-500');
-                    this.reset();
-                }, 2000);
-            }, 1500);
-        });
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            
-            // Animate skill bars on load
-            setTimeout(animateSkillBars, 1000);
-            
-            // Add typing animation to hero
-            const typingElement = document.querySelector('.typing-animation');
-            if (typingElement) {
-                const text = typingElement.textContent;
-                typeWriter(typingElement, text, 50);
-            }
-        });
-
-        // Add scroll event listener for skill bars
-        window.addEventListener('scroll', animateSkillBars);
-
-        // Add CSS for fade-in animation
-        const style = document.createElement('style');
-        style.textContent = `
-            .animate-fade-in {
-                animation: fadeInUp 0.6s ease-out forwards;
-            }
-            
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    // Form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.textContent = 'Sent!';
+        btn.style.background = '#22c55e';
+        btn.style.borderColor = '#22c55e';
+        setTimeout(() => {
+            btn.textContent = 'Send message';
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            this.reset();
+        }, 2500);
+    });
+</script>
 </body>
 </html>
