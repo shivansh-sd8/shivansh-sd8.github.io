@@ -751,18 +751,24 @@
 
             <div>
                 <form class="contact-form" id="contactForm">
+                    <!-- Web3Forms: get your free key at https://web3forms.com -->
+                    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New message from portfolio — shivansh-sd8.github.io">
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                    <input type="checkbox" name="botcheck" style="display:none">
                     <div class="form-group">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-input" placeholder="Your name" required>
+                        <input type="text" name="name" class="form-input" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="you@example.com" required>
+                        <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Message</label>
-                        <textarea class="form-textarea" rows="5" placeholder="What's on your mind?" required></textarea>
+                        <textarea name="message" class="form-textarea" rows="5" placeholder="What's on your mind?" required></textarea>
                     </div>
+                    <div id="formStatus" style="display:none;font-size:13.5px;padding:10px 14px;border-radius:8px;"></div>
                     <button type="submit" class="btn-primary" style="width:fit-content;" id="submitBtn">Send message</button>
                 </form>
             </div>
@@ -814,19 +820,46 @@
     }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-    // Contact form
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Contact form — Web3Forms
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        btn.textContent = 'Sent!';
-        btn.style.background = '#22c55e';
-        btn.style.borderColor = '#22c55e';
-        setTimeout(() => {
+        const btn    = document.getElementById('submitBtn');
+        const status = document.getElementById('formStatus');
+
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+
+        const data = Object.fromEntries(new FormData(this));
+
+        try {
+            const res  = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const json = await res.json();
+
+            if (json.success) {
+                status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+                status.style.display = 'block';
+                status.style.background = 'rgba(34,197,94,0.1)';
+                status.style.border = '1px solid rgba(34,197,94,0.3)';
+                status.style.color = '#22c55e';
+                this.reset();
+                setTimeout(() => { status.style.display = 'none'; }, 5000);
+            } else {
+                throw new Error(json.message || 'Submission failed');
+            }
+        } catch (err) {
+            status.textContent = '✗ Something went wrong. Email me directly at shivansh.sd8@gmail.com';
+            status.style.display = 'block';
+            status.style.background = 'rgba(239,68,68,0.1)';
+            status.style.border = '1px solid rgba(239,68,68,0.3)';
+            status.style.color = '#f87171';
+        } finally {
             btn.textContent = 'Send message';
-            btn.style.background = '';
-            btn.style.borderColor = '';
-            this.reset();
-        }, 2500);
+            btn.disabled = false;
+        }
     });
 </script>
 </body>
