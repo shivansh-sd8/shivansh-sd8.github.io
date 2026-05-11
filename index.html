@@ -24,6 +24,26 @@
             --green-dim: rgba(34,197,94,0.1);
         }
 
+        html.light {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --surface-2: #f4f4f5;
+            --border: #e4e4e7;
+            --border-2: #d4d4d8;
+            --text-1: #09090b;
+            --text-2: #71717a;
+            --text-3: #a1a1aa;
+            --accent: #2563eb;
+            --accent-dim: rgba(37,99,235,0.08);
+            --accent-dim-2: rgba(37,99,235,0.05);
+            --green: #16a34a;
+            --green-dim: rgba(22,163,74,0.08);
+        }
+
+        html.light nav {
+            background: rgba(250,250,250,0.88);
+        }
+
         html { scroll-behavior: smooth; font-size: 16px; }
 
         body {
@@ -99,6 +119,24 @@
             border-color: var(--accent) !important;
             color: var(--accent) !important;
         }
+
+        .theme-toggle {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text-2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover { color: var(--text-1); border-color: var(--border-2); }
+        .theme-toggle svg { width: 15px; height: 15px; pointer-events: none; }
 
         /* --- HERO --- */
         #hero {
@@ -747,6 +785,12 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact" class="nav-cta">Get in touch</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <!-- Moon icon (shown in dark mode) -->
+            <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <!-- Sun icon (shown in light mode, hidden by default) -->
+            <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
     </div>
 </nav>
 
@@ -1221,6 +1265,26 @@
 </footer>
 
 <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const iconMoon = document.getElementById('iconMoon');
+    const iconSun = document.getElementById('iconSun');
+
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+        html.classList.add('light');
+        iconMoon.style.display = 'none';
+        iconSun.style.display = 'block';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const isLight = html.classList.toggle('light');
+        iconMoon.style.display = isLight ? 'none' : 'block';
+        iconSun.style.display = isLight ? 'block' : 'none';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
     // Scroll progress
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
