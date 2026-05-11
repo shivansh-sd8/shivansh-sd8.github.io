@@ -4,875 +4,365 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivansh Dwivedi — Senior Full Stack Engineer</title>
-    <meta name="description" content="Senior Full Stack Engineer specialising in real-time systems, WebRTC, healthcare tech, and full-stack product engineering.">
+    <meta name="description" content="Senior Full Stack Engineer specialising in real-time systems, WebRTC, healthcare tech, and full-stack product engineering. Based in Bengaluru, India.">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg: #080808;
-            --surface: #0f0f0f;
-            --surface-2: #161616;
-            --border: #1f1f1f;
-            --border-2: #2a2a2a;
-            --text-1: #f0f0f0;
-            --text-2: #888;
-            --text-3: #555;
-            --accent: #3b82f6;
-            --accent-dim: rgba(59,130,246,0.12);
-            --accent-dim-2: rgba(59,130,246,0.06);
-            --green: #22c55e;
-            --green-dim: rgba(34,197,94,0.1);
+            --bg:         #080808;
+            --surface:    #0f0f0f;
+            --surface-2:  #161616;
+            --border:     #222;
+            --border-2:   #2e2e2e;
+            --text-1:     #f2f2f2;
+            --text-2:     #999;
+            --text-3:     #555;
+            --accent:     #3b82f6;
+            --accent-dim: rgba(59,130,246,0.13);
+            --accent-dim2:rgba(59,130,246,0.07);
+            --green:      #22c55e;
+            --green-dim:  rgba(34,197,94,0.1);
+            --green-border: rgba(34,197,94,0.22);
+            --nav-bg:     rgba(8,8,8,0.88);
+            --tag-bg:     #161616;
+            --tag-color:  #888;
+            --card-bg:    #0f0f0f;
         }
 
         html.light {
-            --bg: #fafafa;
-            --surface: #ffffff;
-            --surface-2: #f4f4f5;
-            --border: #e4e4e7;
-            --border-2: #d4d4d8;
-            --text-1: #09090b;
-            --text-2: #71717a;
-            --text-3: #a1a1aa;
-            --accent: #2563eb;
-            --accent-dim: rgba(37,99,235,0.08);
-            --accent-dim-2: rgba(37,99,235,0.05);
-            --green: #16a34a;
-            --green-dim: rgba(22,163,74,0.08);
+            --bg:         #f8f9fa;
+            --surface:    #ffffff;
+            --surface-2:  #f1f3f5;
+            --border:     #dee2e6;
+            --border-2:   #ced4da;
+            --text-1:     #111827;
+            --text-2:     #4b5563;
+            --text-3:     #9ca3af;
+            --accent:     #2563eb;
+            --accent-dim: rgba(37,99,235,0.09);
+            --accent-dim2:rgba(37,99,235,0.05);
+            --green:      #16a34a;
+            --green-dim:  rgba(22,163,74,0.08);
+            --green-border: rgba(22,163,74,0.25);
+            --nav-bg:     rgba(248,249,250,0.9);
+            --tag-bg:     #f1f3f5;
+            --tag-color:  #4b5563;
+            --card-bg:    #ffffff;
         }
 
-        html.light nav {
-            background: rgba(250,250,250,0.88);
-        }
-
-        /* Light mode fixes — elements that need explicit overrides */
-
-        /* Terminal always stays dark regardless of theme */
-        html.light .hero-terminal {
-            background: #0f0f0f;
-            border-color: #2a2a2a;
-        }
-        html.light .terminal-bar {
-            background: #161616;
-            border-color: #2a2a2a;
-        }
-        html.light .terminal-title { color: #555; }
-
-        /* Stack / skill tags — better contrast in light */
-        html.light .stack-tag {
-            background: #f0f0f0;
-            border-color: #d4d4d8;
-            color: #52525b;
-        }
-        html.light .skill-pill {
-            background: #f4f4f5;
-            border-color: #d4d4d8;
-            color: #52525b;
-        }
-        html.light .skill-pill.highlight {
-            background: rgba(37,99,235,0.08);
-            border-color: rgba(37,99,235,0.25);
-            color: #2563eb;
-        }
-        html.light .tag {
-            background: #f4f4f5;
-            border-color: #d4d4d8;
-            color: #52525b;
-        }
-
-        /* Project cards */
-        html.light .project-card {
-            background: #ffffff;
-            border-color: #e4e4e7;
-        }
-        html.light .project-card:hover { border-color: #d4d4d8; }
-        html.light .project-card.featured { border-color: rgba(37,99,235,0.2); }
-        html.light .project-icon {
-            background: rgba(37,99,235,0.08);
-            border-color: rgba(37,99,235,0.2);
-        }
-        html.light .project-link {
-            border-color: #e4e4e7;
-            color: #a1a1aa;
-        }
-        html.light .project-link:hover { color: #09090b; border-color: #d4d4d8; }
-
-        /* Experience items */
-        html.light .exp-item { border-color: #e4e4e7; }
-        html.light .exp-bullets li::before { color: #d4d4d8; }
-
-        /* Skill groups */
-        html.light .skill-group {
-            background: #ffffff;
-            border-color: #e4e4e7;
-        }
-        html.light .skill-group-title { color: #a1a1aa; }
-
-        /* Stats strip */
-        html.light .stats-strip {
-            background: #ffffff;
-            border-color: #e4e4e7;
-        }
-        html.light .stat-item { border-color: #e4e4e7; }
-
-        /* Contact section */
-        html.light #contact { background: #f4f4f5; border-color: #e4e4e7; }
-        html.light .form-input,
-        html.light .form-textarea {
-            background: #ffffff;
-            border-color: #d4d4d8;
-            color: #09090b;
-        }
-        html.light .form-input::placeholder,
-        html.light .form-textarea::placeholder { color: #a1a1aa; }
-        html.light .form-input:focus,
-        html.light .form-textarea:focus { border-color: rgba(37,99,235,0.5); }
-        html.light .social-btn {
-            background: #ffffff;
-            border-color: #e4e4e7;
-            color: #52525b;
-        }
-        html.light .social-btn:hover { color: #09090b; border-color: #d4d4d8; }
-
-        /* Footer */
-        html.light footer { border-color: #e4e4e7; }
-
-        /* Hero badge */
-        html.light .hero-badge {
-            background: rgba(22,163,74,0.08);
-            border-color: rgba(22,163,74,0.25);
-        }
-
-        /* Buttons in light mode */
-        html.light .btn-ghost {
-            border-color: #d4d4d8;
-            color: #52525b;
-        }
-        html.light .btn-ghost:hover { color: #09090b; }
-
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { scroll-behavior: smooth; }
 
         body {
             background: var(--bg);
             color: var(--text-1);
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.65;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            transition: background 0.25s, color 0.25s;
         }
 
         a { color: inherit; text-decoration: none; }
-        
-        /* --- NAV --- */
+
+        /* ====== NAV ====== */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
+            position: fixed; top: 0; width: 100%; z-index: 100;
             border-bottom: 1px solid var(--border);
-            background: rgba(8,8,8,0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: background 0.25s, border-color 0.25s;
         }
-
         .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1140px; margin: 0 auto; padding: 0 24px;
+            height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
         }
-
-        .nav-logo {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            color: var(--text-1);
-        }
-
+        .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-1); }
         .nav-logo span { color: var(--accent); }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 13px;
-            color: var(--text-2);
-            transition: color 0.2s;
-            letter-spacing: 0.1px;
-        }
-
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { font-size: 14px; color: var(--text-2); transition: color 0.2s; }
         .nav-links a:hover { color: var(--text-1); }
-
         .nav-cta {
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 13px !important; font-weight: 500;
             color: var(--accent) !important;
-            border: 1px solid rgba(59,130,246,0.3);
-            padding: 6px 16px;
-            border-radius: 6px;
+            border: 1px solid rgba(59,130,246,0.35) !important;
+            padding: 6px 16px; border-radius: 7px;
             transition: background 0.2s, border-color 0.2s !important;
         }
-
-        .nav-cta:hover {
-            background: var(--accent-dim) !important;
-            border-color: var(--accent) !important;
-            color: var(--accent) !important;
-        }
-
+        .nav-cta:hover { background: var(--accent-dim) !important; border-color: var(--accent) !important; }
         .theme-toggle {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--surface-2);
-            color: var(--text-2);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s, border-color 0.2s, background 0.2s;
-            flex-shrink: 0;
+            width: 34px; height: 34px; border-radius: 8px;
+            border: 1px solid var(--border); background: var(--surface-2);
+            color: var(--text-2); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; flex-shrink: 0;
         }
-
         .theme-toggle:hover { color: var(--text-1); border-color: var(--border-2); }
         .theme-toggle svg { width: 15px; height: 15px; pointer-events: none; }
 
-        /* --- HERO --- */
+        /* ====== HERO ====== */
         #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 24px 60px;
-            position: relative;
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 90px 24px 64px;
         }
-
         .hero-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            max-width: 1140px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 480px; gap: 72px; align-items: center;
         }
-
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--green);
-            background: var(--green-dim);
-            border: 1px solid rgba(34,197,94,0.2);
-            padding: 4px 12px;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            letter-spacing: 0.3px;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12.5px; font-weight: 500; color: var(--green);
+            background: var(--green-dim); border: 1px solid var(--green-border);
+            padding: 5px 13px; border-radius: 100px; margin-bottom: 22px; letter-spacing: 0.2px;
         }
-
         .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            content: ''; width: 6px; height: 6px; background: var(--green);
+            border-radius: 50%; animation: pulse 2s infinite;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
         .hero-name {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 700;
-            letter-spacing: -2px;
-            line-height: 1.05;
-            margin-bottom: 16px;
-            color: var(--text-1);
+            font-size: clamp(38px, 5.5vw, 60px);
+            font-weight: 800; letter-spacing: -2.5px; line-height: 1.03;
+            margin-bottom: 16px; color: var(--text-1);
         }
-
         .hero-name span { color: var(--accent); }
-
-        .hero-role {
-            font-size: 18px;
-            color: var(--text-2);
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
+        .hero-role { font-size: 18px; color: var(--text-2); margin-bottom: 18px; font-weight: 400; }
         .hero-desc {
-            font-size: 15px;
-            color: var(--text-2);
-            line-height: 1.7;
-            margin-bottom: 32px;
-            max-width: 480px;
+            font-size: 15.5px; color: var(--text-2); line-height: 1.72;
+            margin-bottom: 28px; max-width: 490px;
         }
-
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 36px;
-        }
-
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px; }
         .tag {
-            font-size: 12px;
-            color: var(--text-2);
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            letter-spacing: 0.2px;
+            font-size: 12.5px; color: var(--tag-color);
+            background: var(--tag-bg); border: 1px solid var(--border);
+            padding: 4px 11px; border-radius: 5px;
+            font-family: 'SF Mono','Fira Code',monospace; letter-spacing: 0.2px;
         }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
+        .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
         .btn-primary {
-            font-size: 14px;
-            font-weight: 500;
-            color: #fff;
-            background: var(--accent);
-            padding: 10px 22px;
-            border-radius: 8px;
-            border: 1px solid var(--accent);
-            cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 14px; font-weight: 500; color: #fff;
+            background: var(--accent); padding: 10px 22px; border-radius: 8px;
+            border: 1px solid var(--accent); cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            display: inline-flex; align-items: center; gap: 8px;
         }
-
-        .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
+        .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
         .btn-ghost {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-2);
-            background: transparent;
-            padding: 10px 22px;
-            border-radius: 8px;
-            border: 1px solid var(--border-2);
-            cursor: pointer;
-            transition: border-color 0.2s, color 0.2s, transform 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 14px; font-weight: 500; color: var(--text-2);
+            background: transparent; padding: 10px 22px; border-radius: 8px;
+            border: 1px solid var(--border-2); cursor: pointer;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+            display: inline-flex; align-items: center; gap: 8px;
         }
-
         .btn-ghost:hover { border-color: var(--border-2); color: var(--text-1); transform: translateY(-1px); }
 
-        /* Hero right — terminal */
+        /* Terminal */
         .hero-terminal {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
+            background: #0d0d0d; border: 1px solid #222;
+            border-radius: 13px; overflow: hidden;
         }
-
         .terminal-bar {
-            background: var(--surface-2);
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid var(--border);
+            background: #161616; padding: 10px 16px;
+            display: flex; align-items: center; gap: 7px;
+            border-bottom: 1px solid #222;
         }
-
         .dot { width: 10px; height: 10px; border-radius: 50%; }
         .dot-red { background: #ff5f57; }
         .dot-yellow { background: #febc2e; }
         .dot-green { background: #28c840; }
-
-        .terminal-title {
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 12px;
-            color: var(--text-3);
-            font-family: 'SF Mono', 'Fira Code', monospace;
-        }
-
-        .terminal-body {
-            padding: 20px;
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .t-comment { color: #555; }
+        .terminal-title { margin: 0 auto; font-size: 12px; color: #444; font-family: 'SF Mono','Fira Code',monospace; }
+        .terminal-body { padding: 22px 22px 24px; font-family: 'SF Mono','Fira Code','Consolas',monospace; font-size: 13px; line-height: 1.85; }
+        .t-comment { color: #4a4a4a; }
         .t-key { color: #7dd3fc; }
         .t-str { color: #86efac; }
         .t-num { color: #fbbf24; }
         .t-bool { color: #f472b6; }
-        .t-punc { color: #888; }
-        .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--accent); vertical-align: middle; animation: blink 1s step-end infinite; }
+        .t-cursor { display: inline-block; width: 8px; height: 14px; background: #3b82f6; vertical-align: middle; animation: blink 1s step-end infinite; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-        /* --- STATS STRIP --- */
+        /* ====== STATS ====== */
         .stats-strip {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: var(--surface);
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            background: var(--surface); transition: background 0.25s, border-color 0.25s;
         }
-
         .stats-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            max-width: 1140px; margin: 0 auto; padding: 0 24px;
+            display: grid; grid-template-columns: repeat(4,1fr);
         }
-
-        .stat-item {
-            padding: 28px 24px;
-            border-right: 1px solid var(--border);
-        }
-
+        .stat-item { padding: 30px 24px; border-right: 1px solid var(--border); }
         .stat-item:last-child { border-right: none; }
+        .stat-value { font-size: 30px; font-weight: 800; letter-spacing: -1.2px; color: var(--text-1); margin-bottom: 4px; }
+        .stat-value em { color: var(--accent); font-style: normal; }
+        .stat-label { font-size: 13.5px; color: var(--text-2); }
 
-        .stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: var(--text-1);
-            margin-bottom: 4px;
-        }
-
-        .stat-value span { color: var(--accent); }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-2);
-        }
-
-        /* --- SECTION LAYOUT --- */
-        section {
-            padding: 96px 24px;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
+        /* ====== SECTIONS ====== */
+        section { padding: 96px 24px; }
+        .section-inner { max-width: 1140px; margin: 0 auto; }
         .section-label {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 12px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 11.5px; font-weight: 600; letter-spacing: 1.8px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+            font-family: 'SF Mono','Fira Code',monospace;
         }
+        .section-title { font-size: clamp(26px, 3vw, 38px); font-weight: 700; letter-spacing: -1.2px; color: var(--text-1); margin-bottom: 10px; }
+        .section-sub { font-size: 15.5px; color: var(--text-2); max-width: 520px; margin-bottom: 52px; line-height: 1.65; }
 
-        .section-title {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: var(--text-1);
-            margin-bottom: 12px;
-        }
-
-        .section-sub {
-            font-size: 15px;
-            color: var(--text-2);
-            max-width: 520px;
-            margin-bottom: 56px;
-            line-height: 1.6;
-        }
-
-        /* --- EXPERIENCE --- */
-        .exp-list { display: flex; flex-direction: column; gap: 2px; }
-
+        /* ====== EXPERIENCE ====== */
         .exp-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 40px;
-            padding: 32px 0;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.2s;
+            display: grid; grid-template-columns: 200px 1fr; gap: 40px;
+            padding: 36px 0; border-bottom: 1px solid var(--border);
+            transition: border-color 0.25s;
         }
-
         .exp-item:first-child { border-top: 1px solid var(--border); }
-
-        .exp-meta { padding-top: 2px; }
-
-        .exp-period {
-            font-size: 12px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            color: var(--text-3);
-            margin-bottom: 6px;
-        }
-
-        .exp-company {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-2);
-        }
-
+        .exp-period { font-size: 12px; font-family: 'SF Mono','Fira Code',monospace; color: var(--text-3); margin-bottom: 6px; }
+        .exp-company { font-size: 13.5px; font-weight: 600; color: var(--text-2); }
         .exp-company a { color: var(--accent); transition: opacity 0.2s; }
-        .exp-company a:hover { opacity: 0.8; }
-
-        .exp-content {}
-
-        .exp-role {
-            font-size: 17px;
-            font-weight: 600;
-            color: var(--text-1);
-            letter-spacing: -0.3px;
-            margin-bottom: 12px;
-        }
-
-        .exp-bullets {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .exp-bullets li {
-            font-size: 14px;
-            color: var(--text-2);
-            line-height: 1.65;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .exp-bullets li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--text-3);
-            font-size: 12px;
-            top: 3px;
-        }
-
-        .exp-bullets strong { color: var(--text-1); font-weight: 500; }
-
-        .exp-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 14px;
-        }
-
+        .exp-company a:hover { opacity: 0.75; }
+        .exp-role { font-size: 17.5px; font-weight: 700; color: var(--text-1); letter-spacing: -0.4px; margin-bottom: 14px; }
+        .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+        .exp-bullets li { font-size: 14.5px; color: var(--text-2); line-height: 1.68; padding-left: 18px; position: relative; }
+        .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--border-2); font-size: 12px; top: 4px; }
+        .exp-bullets strong { color: var(--text-1); font-weight: 600; }
+        .exp-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
         .stack-tag {
-            font-size: 11px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            color: var(--text-3);
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            padding: 3px 8px;
-            border-radius: 4px;
+            font-size: 11.5px; font-family: 'SF Mono','Fira Code',monospace;
+            color: var(--tag-color); background: var(--tag-bg);
+            border: 1px solid var(--border); padding: 3px 9px; border-radius: 5px;
         }
 
-        /* --- PROJECTS --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
+        /* ====== PROJECTS ====== */
+        .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
         .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transition: border-color 0.2s, transform 0.2s;
-            cursor: default;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+            padding: 24px; display: flex; flex-direction: column; gap: 14px;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
-
-        .project-card:hover {
-            border-color: var(--border-2);
-            transform: translateY(-2px);
-        }
-
-        .project-card.featured {
-            grid-column: span 2;
-            background: var(--surface);
-            border-color: rgba(59,130,246,0.2);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
+        .project-card:hover { border-color: var(--border-2); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+        html.light .project-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+        .project-card.featured { grid-column: span 2; border-color: rgba(59,130,246,0.22); }
+        html.light .project-card.featured { border-color: rgba(37,99,235,0.2); }
+        .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
         .project-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(59,130,246,0.2);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            width: 38px; height: 38px; background: var(--accent-dim);
+            border: 1px solid rgba(59,130,246,0.22); border-radius: 9px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-
-        .project-icon svg { width: 16px; height: 16px; color: var(--accent); }
-
-        .project-links { display: flex; gap: 8px; }
-
+        .project-icon svg { width: 17px; height: 17px; color: var(--accent); }
+        .project-links { display: flex; gap: 7px; }
         .project-link {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-3);
-            transition: color 0.2s, border-color 0.2s;
+            width: 30px; height: 30px; border-radius: 7px;
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; color: var(--text-3); transition: color 0.2s, border-color 0.2s;
         }
-
         .project-link:hover { color: var(--text-1); border-color: var(--border-2); }
         .project-link svg { width: 13px; height: 13px; }
+        .project-name { font-size: 16.5px; font-weight: 700; color: var(--text-1); letter-spacing: -0.4px; }
+        .project-sub { font-size: 12px; color: var(--accent); font-weight: 500; letter-spacing: 0.1px; margin-top: 2px; }
+        .project-desc { font-size: 14px; color: var(--text-2); line-height: 1.68; flex: 1; }
+        .project-desc strong { color: var(--text-1); font-weight: 600; }
+        .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
 
-        .project-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-1);
-            letter-spacing: -0.3px;
-        }
-
-        .project-sub {
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 500;
-            letter-spacing: 0.2px;
-        }
-
-        .project-desc {
-            font-size: 13.5px;
-            color: var(--text-2);
-            line-height: 1.65;
-            flex: 1;
-        }
-
-        .project-desc strong { color: var(--text-1); font-weight: 500; }
-
-        .project-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: auto;
-        }
-
-        /* --- SKILLS --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-        }
-
+        /* ====== SKILLS ====== */
+        .skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
         .skill-group {
-            padding: 28px;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            padding: 24px 26px; background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 12px; transition: background 0.25s, border-color 0.25s;
         }
-
-        .skill-group:first-child { border-radius: 12px 0 0 0; }
-        .skill-group:nth-child(2) { border-radius: 0 12px 0 0; }
-        .skill-group:nth-last-child(2) { border-radius: 0 0 0 12px; }
-        .skill-group:last-child { border-radius: 0 0 12px 0; }
-        .skill-group:only-child { border-radius: 12px; }
-
         .skill-group-title {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            color: var(--text-3);
-            margin-bottom: 14px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 11px; font-weight: 600; letter-spacing: 1.4px;
+            text-transform: uppercase; color: var(--text-3); margin-bottom: 14px;
+            font-family: 'SF Mono','Fira Code',monospace;
         }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-pill {
-            font-size: 13px;
-            color: var(--text-2);
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            padding: 5px 12px;
-            border-radius: 6px;
+            font-size: 13.5px; color: var(--tag-color); background: var(--tag-bg);
+            border: 1px solid var(--border); padding: 5px 13px; border-radius: 7px;
             transition: color 0.2s, border-color 0.2s;
         }
-
         .skill-pill:hover { color: var(--text-1); border-color: var(--border-2); }
+        .skill-pill.hl { color: var(--accent); background: var(--accent-dim2); border-color: rgba(59,130,246,0.22); }
+        html.light .skill-pill.hl { border-color: rgba(37,99,235,0.25); }
 
-        .skill-pill.highlight {
-            color: var(--accent);
-            background: var(--accent-dim-2);
-            border-color: rgba(59,130,246,0.2);
-        }
-
-        /* --- CONTACT --- */
-        #contact { background: var(--surface); border-top: 1px solid var(--border); }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .contact-left {}
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 32px;
-        }
-
-        .contact-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--text-2);
-        }
-
+        /* ====== CONTACT ====== */
+        #contact { background: var(--surface); border-top: 1px solid var(--border); transition: background 0.25s, border-color 0.25s; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .contact-info { display: flex; flex-direction: column; gap: 13px; margin-top: 28px; }
+        .contact-row { display: flex; align-items: center; gap: 12px; font-size: 14.5px; color: var(--text-2); }
         .contact-row svg { width: 16px; height: 16px; color: var(--text-3); flex-shrink: 0; }
         .contact-row a { color: var(--text-2); transition: color 0.2s; }
         .contact-row a:hover { color: var(--accent); }
-
-        .contact-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 28px;
-            flex-wrap: wrap;
-        }
-
+        .contact-links { display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap; }
         .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-2);
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            padding: 8px 14px;
-            border-radius: 8px;
-            transition: color 0.2s, border-color 0.2s;
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13.5px; font-weight: 500; color: var(--text-2);
+            background: var(--surface-2); border: 1px solid var(--border);
+            padding: 8px 15px; border-radius: 8px; transition: color 0.2s, border-color 0.2s;
         }
-
         .social-btn svg { width: 15px; height: 15px; }
         .social-btn:hover { color: var(--text-1); border-color: var(--border-2); }
-
-        /* Form */
-        .contact-form { display: flex; flex-direction: column; gap: 14px; }
-
+        .contact-form { display: flex; flex-direction: column; gap: 15px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
-
-        .form-label { font-size: 12px; font-weight: 500; color: var(--text-2); letter-spacing: 0.3px; }
-
+        .form-label { font-size: 13px; font-weight: 500; color: var(--text-2); letter-spacing: 0.2px; }
         .form-input, .form-textarea {
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 14px;
-            color: var(--text-1);
-            font-family: inherit;
-            transition: border-color 0.2s;
-            outline: none;
-            resize: none;
+            background: var(--surface-2); border: 1px solid var(--border); border-radius: 9px;
+            padding: 11px 14px; font-size: 14.5px; color: var(--text-1); font-family: inherit;
+            transition: border-color 0.2s, background 0.25s; outline: none; resize: none;
         }
-
+        html.light .form-input, html.light .form-textarea { background: #fff; }
         .form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
+        .form-input:focus, .form-textarea:focus { border-color: rgba(59,130,246,0.5); }
 
-        .form-input:focus, .form-textarea:focus {
-            border-color: rgba(59,130,246,0.5);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 24px;
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .footer-left { font-size: 13px; color: var(--text-3); }
-
-        .footer-right {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-right a { font-size: 13px; color: var(--text-3); transition: color 0.2s; }
+        /* ====== FOOTER ====== */
+        footer { border-top: 1px solid var(--border); padding: 24px; }
+        .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .footer-left { font-size: 13.5px; color: var(--text-3); }
+        .footer-right { display: flex; gap: 24px; }
+        .footer-right a { font-size: 13.5px; color: var(--text-3); transition: color 0.2s; }
         .footer-right a:hover { color: var(--text-2); }
 
-        /* Progress bar on top */
-        #progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: var(--accent);
-            width: 0%;
-            z-index: 200;
-            transition: width 0.1s linear;
-        }
+        /* ====== SCROLL BAR ====== */
+        #progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); width: 0%; z-index: 200; transition: width 0.1s linear; }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
+        /* ====== FADE UP ====== */
+        .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; gap: 48px; }
             .hero-terminal { display: none; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: 1fr 1fr; }
+            .project-card.featured { grid-column: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 64px 20px; }
+            #hero { padding: 88px 20px 52px; }
+            .nav-inner { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero-name { letter-spacing: -1.5px; }
+            .hero-desc { font-size: 15px; }
+            .stats-inner { grid-template-columns: repeat(2,1fr); padding: 0 20px; }
             .stat-item:nth-child(2) { border-right: none; }
-            .exp-item { grid-template-columns: 1fr; gap: 8px; }
+            .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+            .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+            .exp-item { grid-template-columns: 1fr; gap: 6px; }
+            .exp-meta { display: flex; gap: 12px; align-items: baseline; }
             .projects-grid { grid-template-columns: 1fr; }
             .project-card.featured { grid-column: span 1; }
             .skills-grid { grid-template-columns: 1fr; }
-            .skill-group { border-radius: 0 !important; }
-            .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-            .nav-links { display: none; }
+            .contact-grid { grid-template-columns: 1fr; gap: 44px; }
             .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+            .footer-right { justify-content: center; }
+            .hero-actions { gap: 8px; }
+            .btn-primary, .btn-ghost { padding: 9px 18px; font-size: 13.5px; }
         }
 
-        /* Subtle fade-in on scroll */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media (max-width: 480px) {
+            .hero-name { font-size: 36px; }
+            .section-title { font-size: 26px; }
+            .stat-value { font-size: 26px; }
+            .stats-inner { grid-template-columns: repeat(2,1fr); }
         }
     </style>
 </head>
@@ -891,9 +381,7 @@
             <li><a href="#contact" class="nav-cta">Get in touch</a></li>
         </ul>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <!-- Moon icon (shown in dark mode) -->
             <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <!-- Sun icon (shown in light mode, hidden by default) -->
             <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
     </div>
@@ -903,7 +391,7 @@
 <section id="hero">
     <div class="hero-grid">
         <div>
-            <div class="hero-badge">Available for SDE-2 roles · Immediate joiner</div>
+            <div class="hero-badge">Available for SDE-2 roles &nbsp;·&nbsp; Immediate joiner</div>
             <h1 class="hero-name">Shivansh<br><span>Dwivedi</span></h1>
             <p class="hero-role">Senior Full Stack Engineer</p>
             <p class="hero-desc">
@@ -924,7 +412,7 @@
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     Contact me
                 </a>
-                <a href="https://shivansh-sd8.github.io/" class="btn-ghost" target="_blank">
+                <a href="https://github.com/shivansh-sd8" class="btn-ghost" target="_blank">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                     GitHub
                 </a>
@@ -944,45 +432,43 @@
             </div>
             <div class="terminal-body">
                 <span class="t-comment">// Senior Full Stack Engineer</span><br>
-                <span class="t-key">const</span> engineer = {<br>
-                &nbsp;&nbsp;<span class="t-key">name</span>: <span class="t-str">"Shivansh Dwivedi"</span>,<br>
-                &nbsp;&nbsp;<span class="t-key">location</span>: <span class="t-str">"Bengaluru, India"</span>,<br>
-                &nbsp;&nbsp;<span class="t-key">yoe</span>: <span class="t-num">3.2</span>,<br>
-                &nbsp;&nbsp;<span class="t-key">specialisation</span>: [<br>
+                <span class="t-key">const</span> <span style="color:#e5e7eb">engineer</span> = {<br>
+                &nbsp;&nbsp;<span class="t-key">name</span><span style="color:#e5e7eb">:</span> <span class="t-str">"Shivansh Dwivedi"</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">location</span><span style="color:#e5e7eb">:</span> <span class="t-str">"Bengaluru, India"</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">yoe</span><span style="color:#e5e7eb">:</span> <span class="t-num">3.2</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">specialisation</span><span style="color:#e5e7eb">:</span> [<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"WebRTC"</span>,<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Twilio / AWS Chime"</span>,<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HIPAA / ABDM"</span>,<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Full-Stack Product Eng"</span><br>
                 &nbsp;&nbsp;],<br>
-                &nbsp;&nbsp;<span class="t-key">visa</span>: <span class="t-str">"US B1/B2"</span>,<br>
-                &nbsp;&nbsp;<span class="t-key">openToWork</span>: <span class="t-bool">true</span>,<br>
-                &nbsp;&nbsp;<span class="t-key">noticePeriod</span>: <span class="t-str">"Immediate"</span><br>
-                };<br><br>
-                <span class="t-comment">// Currently building at</span><br>
-                <span class="t-key">const</span> current = <span class="t-str">"Sutherland Global"</span>;<br><br>
-                <span class="t-key">export default</span> engineer;<span class="t-cursor"></span>
+                &nbsp;&nbsp;<span class="t-key">visa</span><span style="color:#e5e7eb">:</span> <span class="t-str">"US B1/B2"</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">openToWork</span><span style="color:#e5e7eb">:</span> <span class="t-bool">true</span>,<br>
+                &nbsp;&nbsp;<span class="t-key">noticePeriod</span><span style="color:#e5e7eb">:</span> <span class="t-str">"Immediate"</span><br>
+                <span style="color:#e5e7eb">};</span><br><br>
+                <span class="t-key">export default</span> <span style="color:#e5e7eb">engineer;</span><span class="t-cursor"></span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- STATS STRIP -->
+<!-- STATS -->
 <div class="stats-strip">
     <div class="stats-inner">
         <div class="stat-item">
-            <div class="stat-value">3<span>+</span></div>
+            <div class="stat-value">3<em>+</em></div>
             <div class="stat-label">Years of experience</div>
         </div>
         <div class="stat-item">
-            <div class="stat-value">1K<span>+</span></div>
+            <div class="stat-value">1K<em>+</em></div>
             <div class="stat-label">Concurrent users handled</div>
         </div>
         <div class="stat-item">
-            <div class="stat-value">99.9<span>%</span></div>
+            <div class="stat-value">99.9<em>%</em></div>
             <div class="stat-label">Platform uptime</div>
         </div>
         <div class="stat-item">
-            <div class="stat-value">&lt;200<span>ms</span></div>
+            <div class="stat-value">&lt;200<em>ms</em></div>
             <div class="stat-label">P95 response time</div>
         </div>
     </div>
@@ -993,31 +479,24 @@
     <div class="section-inner">
         <div class="section-label">Experience</div>
         <h2 class="section-title">Where I've worked</h2>
-        <p class="section-sub">Building production systems across IT services, startups, and healthcare technology.</p>
+        <p class="section-sub">Building production systems across IT services, healthcare technology, and startups.</p>
 
-        <div class="exp-list">
-
+        <div>
             <div class="exp-item fade-up">
                 <div class="exp-meta">
                     <div class="exp-period">Aug 2025 — Present</div>
                     <div class="exp-company">Sutherland Global</div>
                 </div>
-                <div class="exp-content">
-                    <div class="exp-role">Senior Software Engineer — Healthcare Streaming Platform</div>
+                <div>
+                    <div class="exp-role">Senior Software Engineer — Healthcare Streaming</div>
                     <ul class="exp-bullets">
-                        <li>Designed two <strong>vendor-agnostic SDKs</strong> (AV calling + media streaming) using the <strong>Factory Pattern</strong> over Twilio and AWS Chime — eliminated ~60% cross-cutting code duplication; vendor switch requires a single config change with zero consumer-side refactoring</li>
-                        <li>Consolidated fragmented Twilio, Chime, and Firebase integrations into a <strong>single unified backend</strong> — standardised session contracts across all three providers, reduced backend surface area by ~40% and cut session API response time by ~35%</li>
-                        <li>Built the <strong>real-time multi-stream layer</strong> for HIPAA-compliant telehealth: simultaneous console screen + 3 live camera feeds over WebRTC, coordinating ISA-side publish and RU-side subscribe pipelines</li>
-                        <li>Developed a <strong>3-mode remote session control system</strong> (View / Control / Supervise) with permission-gated approval flows and a privileged no-approval override for senior operators</li>
+                        <li>Designed two <strong>vendor-agnostic SDKs</strong> (AV calling + media streaming) using the <strong>Factory Pattern</strong> over Twilio and AWS Chime — eliminated ~60% code duplication; vendor switch requires a single config change with zero consumer-side refactoring</li>
+                        <li>Consolidated Twilio, Chime, and Firebase integrations into a <strong>unified backend</strong> — standardised session contracts, reduced surface area by ~40% and cut session API response time by ~35%</li>
+                        <li>Built the <strong>real-time multi-stream layer</strong> for HIPAA-compliant telehealth: console screen + 3 live camera feeds over WebRTC, coordinating ISA-side publish and RU-side subscribe pipelines</li>
+                        <li>Developed a <strong>3-mode remote control system</strong> (View / Control / Supervise) with permission-gated flows and privileged no-approval override for senior operators</li>
                     </ul>
                     <div class="exp-stack">
-                        <span class="stack-tag">WebRTC</span>
-                        <span class="stack-tag">Twilio</span>
-                        <span class="stack-tag">AWS Chime</span>
-                        <span class="stack-tag">Firebase</span>
-                        <span class="stack-tag">Node.js</span>
-                        <span class="stack-tag">TypeScript</span>
-                        <span class="stack-tag">React.js</span>
+                        <span class="stack-tag">WebRTC</span><span class="stack-tag">Twilio</span><span class="stack-tag">AWS Chime</span><span class="stack-tag">Firebase</span><span class="stack-tag">Node.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">React.js</span>
                     </div>
                 </div>
             </div>
@@ -1027,23 +506,16 @@
                     <div class="exp-period">Apr 2025 — Jul 2025</div>
                     <div class="exp-company"><a href="https://tripmeglobal.com" target="_blank">Tripme Global ↗</a></div>
                 </div>
-                <div class="exp-content">
+                <div>
                     <div class="exp-role">Founding Engineer — Full Stack</div>
                     <ul class="exp-bullets">
-                        <li>Sole engineer — designed and built the entire platform from scratch: <strong>28 Mongoose models</strong>, 22 REST API modules, 21 controllers, and 8 service layers; deployed to DigitalOcean via GitHub Actions CI/CD with PM2 and Nginx</li>
-                        <li>Engineered <strong>Razorpay integration end-to-end</strong> — HMAC webhook verification (timing-safe), idempotency-key-based duplicate prevention, and automated reconciliation cron recovering stuck UPI payments every 12 minutes</li>
-                        <li>Built a <strong>3-tier dynamic pricing engine</strong> with GST, host earning splits, cleaning fees, security deposits, and coupon application — full financial breakdown stored per transaction for audit</li>
+                        <li>Sole engineer — designed and built the entire platform from scratch: <strong>28 Mongoose models</strong>, 22 REST API modules, 21 controllers, 8 service layers; deployed via GitHub Actions CI/CD to DigitalOcean with PM2 and Nginx</li>
+                        <li>Engineered <strong>Razorpay end-to-end</strong> — HMAC webhook verification (timing-safe), idempotency-key duplicate prevention, automated reconciliation cron recovering stuck UPI payments every 12 minutes</li>
+                        <li>Built <strong>3-tier dynamic pricing engine</strong> with GST, host splits, security deposits, coupon application — full financial breakdown stored per transaction for audit</li>
                         <li>Implemented <strong>multi-role auth</strong> (Guest/Host/Admin), Helmet CSP, tiered rate limiting, NoSQL injection sanitization, and structured audit logging</li>
                     </ul>
                     <div class="exp-stack">
-                        <span class="stack-tag">Next.js 16</span>
-                        <span class="stack-tag">Node.js</span>
-                        <span class="stack-tag">MongoDB</span>
-                        <span class="stack-tag">Razorpay</span>
-                        <span class="stack-tag">Cloudinary</span>
-                        <span class="stack-tag">Redis</span>
-                        <span class="stack-tag">DigitalOcean</span>
-                        <span class="stack-tag">Nginx</span>
+                        <span class="stack-tag">Next.js 16</span><span class="stack-tag">Node.js</span><span class="stack-tag">MongoDB</span><span class="stack-tag">Razorpay</span><span class="stack-tag">Redis</span><span class="stack-tag">DigitalOcean</span><span class="stack-tag">Nginx</span>
                     </div>
                 </div>
             </div>
@@ -1053,21 +525,16 @@
                     <div class="exp-period">Apr 2024 — Mar 2025</div>
                     <div class="exp-company">Wipro — AustralianSuper</div>
                 </div>
-                <div class="exp-content">
+                <div>
                     <div class="exp-role">Software Engineer (Project Engineer L1)</div>
                     <ul class="exp-bullets">
                         <li>Led <strong>legacy payroll system migration</strong> — composite indexing, eliminated redundant joins, cursor-based pagination; reduced query execution time by <strong>20%</strong></li>
-                        <li>Built RESTful APIs with Express.js for the member portal with JWT + OAuth 2.0 authentication and role-based access control</li>
-                        <li>Improved React frontend performance via code splitting, lazy loading, and bundle optimisation — measurably reduced initial load time and improved Core Web Vitals</li>
-                        <li>Collaborated cross-timezone with Melbourne engineering team in 2-week Agile sprints; zero-regression delivery across 4 consecutive sprints</li>
+                        <li>Built RESTful APIs with Express.js for the member portal with JWT + OAuth 2.0 and role-based access control</li>
+                        <li>Improved React frontend via code splitting, lazy loading, and bundle optimisation — measurably reduced initial load time and improved Core Web Vitals</li>
+                        <li>Cross-timezone collaboration with Melbourne team in 2-week Agile sprints — zero-regression delivery across 4 consecutive sprints</li>
                     </ul>
                     <div class="exp-stack">
-                        <span class="stack-tag">React.js</span>
-                        <span class="stack-tag">Node.js</span>
-                        <span class="stack-tag">Express.js</span>
-                        <span class="stack-tag">PostgreSQL</span>
-                        <span class="stack-tag">JWT</span>
-                        <span class="stack-tag">OAuth 2.0</span>
+                        <span class="stack-tag">React.js</span><span class="stack-tag">Node.js</span><span class="stack-tag">Express.js</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">JWT</span><span class="stack-tag">OAuth 2.0</span>
                     </div>
                 </div>
             </div>
@@ -1077,37 +544,30 @@
                     <div class="exp-period">Mar 2023 — Apr 2024</div>
                     <div class="exp-company">Wipro — CloudCar R&D</div>
                 </div>
-                <div class="exp-content">
+                <div>
                     <div class="exp-role">Software Engineer (Project Engineer)</div>
                     <ul class="exp-bullets">
-                        <li>Built <strong>real-time telemetry pipelines</strong> for autonomous vehicle data using Node.js and AWS, enabling cloud-based predictive maintenance and fleet health monitoring</li>
+                        <li>Built <strong>real-time telemetry pipelines</strong> for autonomous vehicle data using Node.js and AWS — cloud-based predictive maintenance and fleet health monitoring</li>
                         <li>Provisioned AWS infrastructure (EC2, S3, CloudFront, Lambda) for vehicle data ingestion and low-latency content delivery to edge devices</li>
-                        <li>Developed fleet analytics dashboard in React.js surfacing live vehicle health metrics, GPS tracking, and route optimisation data</li>
+                        <li>Developed fleet analytics dashboard in React.js — live vehicle health metrics, GPS tracking, route optimisation data</li>
                     </ul>
                     <div class="exp-stack">
-                        <span class="stack-tag">Node.js</span>
-                        <span class="stack-tag">AWS</span>
-                        <span class="stack-tag">React.js</span>
-                        <span class="stack-tag">EC2</span>
-                        <span class="stack-tag">Lambda</span>
-                        <span class="stack-tag">S3</span>
+                        <span class="stack-tag">Node.js</span><span class="stack-tag">AWS</span><span class="stack-tag">React.js</span><span class="stack-tag">EC2</span><span class="stack-tag">Lambda</span><span class="stack-tag">S3</span>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="projects" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="section-inner">
         <div class="section-label">Projects</div>
         <h2 class="section-title">Things I've built</h2>
         <p class="section-sub">Production systems across healthcare, travel, and social infrastructure.</p>
 
         <div class="projects-grid">
-
             <!-- AbhaAyushman — featured -->
             <div class="project-card featured fade-up">
                 <div class="project-header">
@@ -1115,10 +575,10 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/shivansh-sd8/abdmcare-backend" target="_blank" class="project-link" title="Backend repo">
+                        <a href="https://github.com/shivansh-sd8/abdmcare-backend" target="_blank" class="project-link" title="Backend">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                         </a>
-                        <a href="https://github.com/shivansh-sd8/abdmcare-frontend" target="_blank" class="project-link" title="Frontend repo">
+                        <a href="https://github.com/shivansh-sd8/abdmcare-frontend" target="_blank" class="project-link" title="Frontend">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                         </a>
                         <a href="https://www.abhaayushman.com/landing" target="_blank" class="project-link" title="Live site">
@@ -1130,19 +590,9 @@
                     <div class="project-name">AbhaAyushman</div>
                     <div class="project-sub">ABDM-Compliant Hospital Information Management System</div>
                 </div>
-                <p class="project-desc">
-                    Production-grade HIMS integrating with India's <strong>Ayushman Bharat Digital Mission</strong> as a registered <strong>HIP/HIU</strong>. Implemented ABHA registration, care-context linking, consent management, and <strong>FHIR-structured EMR records</strong> with RSA-encrypted payloads. OPD/IPD workflows with a <strong>10-state encounter state machine</strong>. Multi-tenant SaaS with <strong>10+ RBAC roles</strong>, subscription-tier feature gating, and hospitalId-scoped data isolation.
-                </p>
+                <p class="project-desc">Production-grade HIMS integrating with India's <strong>Ayushman Bharat Digital Mission</strong> as a registered <strong>HIP/HIU</strong>. ABHA registration, care-context linking, consent management, and <strong>FHIR-structured EMR records</strong> with RSA-encrypted payloads. OPD/IPD workflows with <strong>10-state encounter state machine</strong>. Multi-tenant SaaS with <strong>10+ RBAC roles</strong>, subscription-tier feature gating, and hospitalId-scoped data isolation.</p>
                 <div class="project-stack">
-                    <span class="stack-tag">Node.js</span>
-                    <span class="stack-tag">TypeScript</span>
-                    <span class="stack-tag">PostgreSQL</span>
-                    <span class="stack-tag">Prisma</span>
-                    <span class="stack-tag">React 18</span>
-                    <span class="stack-tag">Redux Toolkit</span>
-                    <span class="stack-tag">Redis</span>
-                    <span class="stack-tag">BullMQ</span>
-                    <span class="stack-tag">Material UI</span>
+                    <span class="stack-tag">Node.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Prisma</span><span class="stack-tag">React 18</span><span class="stack-tag">Redux Toolkit</span><span class="stack-tag">Redis</span><span class="stack-tag">BullMQ</span>
                 </div>
             </div>
 
@@ -1162,15 +612,9 @@
                     <div class="project-name">Tripme Global</div>
                     <div class="project-sub">Airbnb-style Travel Marketplace</div>
                 </div>
-                <p class="project-desc">
-                    Built end-to-end as sole engineer. <strong>28 Mongoose models</strong>, 22 API modules, Razorpay with automated payment reconciliation cron, 3-tier pricing engine, multi-role auth, KYC verification. Deployed via GitHub Actions to DigitalOcean with PM2 and Nginx.
-                </p>
+                <p class="project-desc">Built end-to-end as sole engineer. <strong>28 Mongoose models</strong>, 22 API modules, Razorpay with automated payment reconciliation, 3-tier pricing engine, multi-role auth, KYC verification. Deployed via GitHub Actions CI/CD with PM2 and Nginx on DigitalOcean.</p>
                 <div class="project-stack">
-                    <span class="stack-tag">Next.js 16</span>
-                    <span class="stack-tag">MongoDB</span>
-                    <span class="stack-tag">Razorpay</span>
-                    <span class="stack-tag">Redis</span>
-                    <span class="stack-tag">DigitalOcean</span>
+                    <span class="stack-tag">Next.js 16</span><span class="stack-tag">MongoDB</span><span class="stack-tag">Razorpay</span><span class="stack-tag">Redis</span><span class="stack-tag">DigitalOcean</span>
                 </div>
             </div>
 
@@ -1193,18 +637,11 @@
                     <div class="project-name">DevConnect</div>
                     <div class="project-sub">Developer Social Platform</div>
                 </div>
-                <p class="project-desc">
-                    Full-stack social platform with <strong>500+ active users</strong>. Real-time messaging via Socket.io, Redis-cached activity feed for sub-100ms load times, JWT auth, and advanced developer profile search.
-                </p>
+                <p class="project-desc"><strong>500+ active users</strong>. Real-time messaging via Socket.io, Redis-cached activity feed for sub-100ms load times, JWT auth, and advanced developer profile search.</p>
                 <div class="project-stack">
-                    <span class="stack-tag">React.js</span>
-                    <span class="stack-tag">Node.js</span>
-                    <span class="stack-tag">MongoDB</span>
-                    <span class="stack-tag">Socket.io</span>
-                    <span class="stack-tag">Redis</span>
+                    <span class="stack-tag">React.js</span><span class="stack-tag">Node.js</span><span class="stack-tag">MongoDB</span><span class="stack-tag">Socket.io</span><span class="stack-tag">Redis</span>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -1214,16 +651,16 @@
     <div class="section-inner">
         <div class="section-label">Skills</div>
         <h2 class="section-title">Tech I work with</h2>
-        <p class="section-sub">Tools and technologies I use in production, not just tutorials.</p>
+        <p class="section-sub">Tools and technologies I use in production — not just on a CV.</p>
 
         <div class="skills-grid">
             <div class="skill-group fade-up">
                 <div class="skill-group-title">Real-Time & Streaming</div>
                 <div class="skill-tags">
-                    <span class="skill-pill highlight">WebRTC</span>
-                    <span class="skill-pill highlight">Twilio (Video/Voice)</span>
-                    <span class="skill-pill highlight">AWS Chime SDK</span>
-                    <span class="skill-pill highlight">Firebase</span>
+                    <span class="skill-pill hl">WebRTC</span>
+                    <span class="skill-pill hl">Twilio (Video/Voice)</span>
+                    <span class="skill-pill hl">AWS Chime SDK</span>
+                    <span class="skill-pill hl">Firebase</span>
                     <span class="skill-pill">Socket.io</span>
                     <span class="skill-pill">WebSocket</span>
                 </div>
@@ -1231,59 +668,37 @@
             <div class="skill-group fade-up">
                 <div class="skill-group-title">Frontend</div>
                 <div class="skill-tags">
-                    <span class="skill-pill highlight">React.js</span>
-                    <span class="skill-pill highlight">Next.js 16</span>
-                    <span class="skill-pill highlight">TypeScript</span>
+                    <span class="skill-pill hl">React.js</span>
+                    <span class="skill-pill hl">Next.js 16</span>
+                    <span class="skill-pill hl">TypeScript</span>
                     <span class="skill-pill">Redux Toolkit</span>
                     <span class="skill-pill">TanStack Query</span>
                     <span class="skill-pill">Tailwind CSS</span>
                     <span class="skill-pill">Material UI</span>
-                    <span class="skill-pill">Framer Motion</span>
                 </div>
             </div>
             <div class="skill-group fade-up">
-                <div class="skill-group-title">Backend</div>
+                <div class="skill-group-title">Backend & Databases</div>
                 <div class="skill-tags">
-                    <span class="skill-pill highlight">Node.js</span>
-                    <span class="skill-pill highlight">Express.js</span>
-                    <span class="skill-pill">REST APIs</span>
-                    <span class="skill-pill">BullMQ</span>
+                    <span class="skill-pill hl">Node.js</span>
+                    <span class="skill-pill hl">PostgreSQL</span>
+                    <span class="skill-pill hl">MongoDB</span>
+                    <span class="skill-pill hl">Redis</span>
+                    <span class="skill-pill">Express.js</span>
                     <span class="skill-pill">Prisma ORM</span>
-                    <span class="skill-pill">Microservices</span>
-                    <span class="skill-pill">HMAC / RSA</span>
+                    <span class="skill-pill">BullMQ</span>
                 </div>
             </div>
             <div class="skill-group fade-up">
-                <div class="skill-group-title">Databases</div>
+                <div class="skill-group-title">Cloud, DevOps & Security</div>
                 <div class="skill-tags">
-                    <span class="skill-pill highlight">PostgreSQL</span>
-                    <span class="skill-pill highlight">MongoDB</span>
-                    <span class="skill-pill highlight">Redis</span>
-                    <span class="skill-pill">Prisma</span>
-                    <span class="skill-pill">Mongoose</span>
-                </div>
-            </div>
-            <div class="skill-group fade-up">
-                <div class="skill-group-title">Cloud & DevOps</div>
-                <div class="skill-tags">
-                    <span class="skill-pill highlight">AWS (EC2, S3, Lambda, CloudFront, RDS)</span>
+                    <span class="skill-pill hl">AWS (EC2, S3, Lambda, CloudFront)</span>
                     <span class="skill-pill">DigitalOcean</span>
                     <span class="skill-pill">Docker</span>
-                    <span class="skill-pill">GitHub Actions CI/CD</span>
-                    <span class="skill-pill">Nginx</span>
-                    <span class="skill-pill">PM2</span>
-                </div>
-            </div>
-            <div class="skill-group fade-up">
-                <div class="skill-group-title">Auth & Security</div>
-                <div class="skill-tags">
-                    <span class="skill-pill">JWT</span>
-                    <span class="skill-pill">OAuth 2.0</span>
-                    <span class="skill-pill">HIPAA Compliance</span>
-                    <span class="skill-pill">ABDM / FHIR</span>
-                    <span class="skill-pill">RBAC</span>
-                    <span class="skill-pill">Helmet CSP</span>
-                    <span class="skill-pill">Rate Limiting</span>
+                    <span class="skill-pill">GitHub Actions</span>
+                    <span class="skill-pill">Nginx / PM2</span>
+                    <span class="skill-pill">HIPAA / ABDM</span>
+                    <span class="skill-pill">RBAC / JWT / OAuth 2.0</span>
                 </div>
             </div>
         </div>
@@ -1294,10 +709,10 @@
 <section id="contact">
     <div class="section-inner">
         <div class="contact-grid">
-            <div class="contact-left">
+            <div>
                 <div class="section-label">Contact</div>
                 <h2 class="section-title">Let's talk</h2>
-                <p style="font-size:15px; color: var(--text-2); line-height: 1.7; margin-top: 12px; max-width: 420px;">
+                <p style="font-size:15.5px;color:var(--text-2);line-height:1.7;margin-top:12px;max-width:420px;">
                     Open to SDE-2 and Senior Full Stack roles at product-first companies in Bengaluru. Immediate joiner. US B1/B2 visa holder — available for onsite travel.
                 </p>
                 <div class="contact-info">
@@ -1348,9 +763,7 @@
                         <label class="form-label">Message</label>
                         <textarea class="form-textarea" rows="5" placeholder="What's on your mind?" required></textarea>
                     </div>
-                    <button type="submit" class="btn-primary" style="width: fit-content;" id="submitBtn">
-                        Send message
-                    </button>
+                    <button type="submit" class="btn-primary" style="width:fit-content;" id="submitBtn">Send message</button>
                 </form>
             </div>
         </div>
@@ -1374,42 +787,34 @@
     const html = document.documentElement;
     const toggleBtn = document.getElementById('themeToggle');
     const iconMoon = document.getElementById('iconMoon');
-    const iconSun = document.getElementById('iconSun');
+    const iconSun  = document.getElementById('iconSun');
 
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
+    if (localStorage.getItem('theme') === 'light') {
         html.classList.add('light');
         iconMoon.style.display = 'none';
-        iconSun.style.display = 'block';
+        iconSun.style.display  = 'block';
     }
 
     toggleBtn.addEventListener('click', () => {
         const isLight = html.classList.toggle('light');
-        iconMoon.style.display = isLight ? 'none' : 'block';
-        iconSun.style.display = isLight ? 'block' : 'none';
+        iconMoon.style.display = isLight ? 'none'  : 'block';
+        iconSun.style.display  = isLight ? 'block' : 'none';
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // Scroll progress
+    // Scroll progress bar
     window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        document.getElementById('progress').style.width = (scrollTop / docHeight * 100) + '%';
+        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+        document.getElementById('progress').style.width = pct + '%';
     });
 
     // Fade-up on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                observer.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Form
+    // Contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
